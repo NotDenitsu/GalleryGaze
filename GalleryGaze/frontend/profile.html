@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/689600d0a2.js" crossorigin="anonymous"></script>
+    <style>
+        body{
+            background-image: url("shroom.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .profile__container-main{
+            max-width: 1800px;
+            max-height: 800px;
+            padding: 10px;
+            margin: 50px 0 50px 70px;
+            display: flex;
+            justify-content: space-around;
+            gap: 10px;
+        }
+
+        .profile__container-content{
+            width: 1200px;
+            height: 800px;
+            display: flex;
+            flex-direction: column;
+            background-color: #223843;
+            box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4);
+            border-radius: 30px 10px 30px 10px;
+        }
+
+        .profile__container-content--text{
+            color: white;
+            font-size: 2em;
+            text-indent: 1em;
+        }
+
+        .info__container--details{
+            max-width: 400px;
+            max-height: 800px; 
+            border-radius: 30px 10px 30px 10px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            justify-content: flex-start;
+
+            background-color: #223843;
+            box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .info__container--details-top{
+            max-width: 400px;
+            display: flex;
+            justify-content: space-between;
+            border: 1px solid #A29C9B;
+            border-radius: 30px 10px 30px 10px;
+        }
+
+        .info__container--details-user {
+            max-width: 300px;
+            max-height: 140px;
+            display: flex;
+            padding: 10px;
+            gap: 10px;
+        }
+
+        .info__container--details-avatar{
+            width: 140px;
+            height: 140px;
+            border-radius: 15px;
+        }
+
+        .info__container--details-username{
+            font-size: 1.5em;
+            margin-top: 0;
+        }
+
+        .info__container--details-stats{
+            max-width: 200px;
+            max-height: 140px;
+            color: white;
+            line-height: 0.5em;
+            padding: 10px;
+        }
+
+        .info__container--details-report{
+            color: white;
+            font-size: 1.5em;
+            width: 50px;
+            height: 50px;
+            background: none;
+            border: none;
+            transition: all 0.3s;
+        }
+
+        .info__container--details-report:hover{
+            color: #DB324D;
+            transform: scale(1.1);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .info__container--details-middle{
+            max-width: 500px;
+            padding: 10px;
+            border: 1px solid #A29C9B;
+            border-radius: 30px 10px 30px 10px;
+        }
+
+        .info__container--details-bio{
+            color: white;
+            font-size: 1.2em;
+
+        }
+
+        .info__container--details-bottom{
+            max-width: 500px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 10px;
+        }
+
+        .info__container--details-follow{
+            border: none;
+            border-radius: 5px;
+            padding: 10px 50px;
+
+            color: white;
+            background-color: #DB324D;
+            transition: all 0.3s;
+        }
+
+        .info__container--details-message{
+            border: 1px solid #DB324D;
+            border-radius: 5px;
+            padding: 10px 50px;
+
+            color: #DB324D;
+            transition: all 0.3s;
+        }
+
+        .info__container--details-addfriend{
+            border: 1px solid #DB324D;
+            border-radius: 5px;
+            padding: 5px 10px;
+
+            color:#DB324D;
+            transition: all 0.3s;
+        }
+
+        .info__container--details-follow:hover{
+            border: none;
+            border-radius: 5px;
+            padding: 10px 50px;
+
+            color: white;
+            background-color: #A62639;
+            cursor: pointer;
+            transform: scale(1.05);
+            transition: all 0.3s;
+        }
+
+        .info__container--details-message:hover{
+            border: 1px solid #DB324D;
+            border-radius: 5px;
+            padding: 10px 50px;
+
+            color: white;
+            background-color: #DB324D;
+            cursor: pointer;
+            transform: scale(1.05);
+            transition: all 0.3s;
+        }
+
+        .info__container--details-addfriend:hover{
+            border: 1px solid #DB324D;
+            border-radius: 5px;
+            padding: 5px 10px;
+
+            color: white;
+            background-color: #DB324D;
+            cursor: pointer;
+            transform: scale(1.05);
+            transition: all 0.3s;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="profile__container-main">
+            <div class="info__container--details">
+                <div class="info__container--details-top">
+                    <div class="info__container--details-user">
+                        <img class="info__container--details-avatar" src="cry.png">
+                        <div class="info__container--details-stats">
+                            <h3 class="info__container--details-username">Denitsu</h3>
+                            <h4>Followers: 3k+</h4>
+                            <h4>Following: 27</h4>
+                            <h4>Friends: 39</h4>
+                        </div>
+                    </div>
+                    <button class="info__container--details-report"><i class="fa fa-solid fa-circle-exclamation"></i></button>
+                </div>
+                <div class="info__container--details-middle">
+                    <p class="info__container--details-bio">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis ullam voluptatum sed,
+                        iusto atque voluptate esse suscipit! Odit, tenetur amet assumenda maiores,
+                        quod ab facere quo ex enim quas voluptatibus.</p>
+                </div>
+                <div class="info__container--details-bottom">
+                    <button class="info__container--details-follow">Follow</button>
+                    <button class="info__container--details-message">Message</button>
+                    <button class="info__container--details-addfriend"><i class="fa fa-solid fa-user-plus"></i></button>
+                </div>
+            </div>          
+        <div class="profile__container-content">
+            <h2 class="profile__container-content--text">Posts 437</h2>
+            <div class="profile__container-content--content">
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

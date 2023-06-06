@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+    <script src="https://kit.fontawesome.com/689600d0a2.js" crossorigin="anonymous"></script>
+
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+
+        .settings__container-main{
+            display: flex;
+            max-width: 900px;
+            max-height: 500px;
+            margin: 100px auto;
+            background-color: #223843;
+            border-radius: 15px;
+            overflow: hidden;
+            color: white;
+            
+        }
+
+        .settings__container-nav{
+            min-width: 300px;
+            min-height: 500px;
+            border-right: 1px solid #A29C9B;
+        }
+
+        .settings__container-profile{
+            min-height: 200px;
+            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 1px solid #A29C9B;
+        }
+
+        .settings__container-options{
+            min-width: 600px;
+            min-height: 500px;
+            padding: 10px 30px;           
+        }
+
+        .settings__container-pills{
+            max-height: 300px;
+        }
+
+        .settings__pill{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            padding: 20px;
+            border-bottom: 1px solid #A29C9B;
+        }
+
+        .settings__pill:hover{
+            background-color: #DB324D;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .settings__avatar-frame{
+            max-width: 75px;
+            max-height: 75px;
+            border-radius: 50%;
+            border: 3px solid #A29C9B;
+            overflow: hidden;
+            object-fit: contain;
+        }
+
+        .settings__avatar{
+            width: 100%;
+        }
+
+        .settings__container-fields{
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            gap: 20px;
+        }
+
+        .settings__container-buttons{
+            display: flex;
+            justify-content: right;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .settings__edit{
+            background-color: #DB324D;
+            padding: 10px 40px;
+            border: none;
+            border-radius: 10px;
+        }
+
+        .settings__save{
+            background-color: #a0fd14;
+            padding: 10px 40px;
+            border: none;
+            border-radius: 10px;
+        }
+
+        .settings__change-password{
+            max-width: 200px;
+            background-color: #a0fd14;
+            padding: 10px 40px;
+            border: none;
+            border-radius: 10px;
+        }
+
+        .settings__container-label{
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .settings__field{
+            min-width: 300px;
+            padding: 10px 10px;
+            background: none;
+            color: white;
+            border: 1px solid #A29C9B;
+            border-radius: 10px;   
+        }
+
+        .settings__field-bio{
+            min-height: 100px;
+            padding: 10px 10px;
+            background: none;
+            color: white;
+            border: 1px solid #A29C9B;
+            border-radius: 10px;
+            resize: none;
+        }
+
+        .settings__account-options{
+            
+        }
+        .settings__security-options{
+            display: none;
+        }
+        .settings__notifications-options{
+            display: none;
+        }
+
+        .settings__selected{
+            display: block;
+        }
+
+    </style>
+
+    <script src="settings.js"></script>
+</head>
+<body>
+    <div class="settings__container-main">
+        <div class="settings__container-nav">
+            <div class="settings__container-profile">
+                <div class="settings__avatar-frame">
+                    <img src="cat.jpg" class="settings__avatar" alt="">
+                </div>
+                <h2 class="settings__username">Beluga</h2>
+            </div>
+            <div class="settings__container-pills">
+                <div id="settings-account" class="settings__pill"><i class="fa fa-solid fa-user"> </i>Account</div>
+                <div id="settings-security" class="settings__pill"><i class="fa fa-solid fa-lock"> </i>Security</div>
+                <div id="settings-notifications" class="settings__pill"><i class="fa fa-solid fa-bell"> </i>Notifications</div>
+            </div>
+        </div>
+        <div class="settings__container-options">
+            <div class="settings__account-options">
+                <h1 class="settings__title"> Account </h1>
+                <div class="settings__container-fields">
+                    <div class="settings__container-label">
+                        <label for="username-edit">Username</label>
+                        <input id="username-edit" class="settings__field" type="text" name="username">
+                    </div>
+                    <div class="settings__container-label">
+                        <label for="email-edit">Email</label>
+                        <input id="email-edit" class="settings__field" type="text" name="email">
+                    </div>
+
+                    <div class="settings__container-label">
+                        <label for="biography-edit">Biography</label>
+                        <textarea id="biography-edit" class="settings__field-bio" name="biography"></textarea>
+                    </div>
+                </div>
+                <div class="settings__container-buttons">
+                    <button class="settings__edit">Edit</button>
+                    <button class="settings__save">Save</button>
+                </div>
+            </div>
+            <div class="settings__security-options">
+                <h1 class="settings__title">Security</h1>
+                <div class="settings__container-label">
+                    <label for="change-password">Password</label>
+                    <button class="settings__change-password">Change Password</button>
+                </div>
+                <div class="settings__container-fields">
+                    <div class="settings__container-label">
+                        <label for="current-password-edit">Current Password</label>
+                        <input id="current-password-edit" class="settings__field" type="password" name="current-password">
+                    </div>
+                    <div class="settings__container-label">
+                        <label for="new-password-edit">New Password</label>
+                        <input id="new-password-edit" class="settings__field" type="password" name="new-password">
+                    </div>
+
+                    <div class="settings__container-label">
+                        <label for="repeat-new-password-edit">Repeat New Password</label>
+                        <input id="repeat-new-password-edit" class="settings__field" type="password" name="repeat-new-password">
+                    </div>
+                </div>
+                <div class="settings__container-buttons">
+                    <button class="settings__edit">Edit</button>
+                    <button class="settings__save">Save</button>
+                </div>
+            </div>
+            <div class="settings__notifications-options">
+                <h1 class="settings__title"> </h1>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

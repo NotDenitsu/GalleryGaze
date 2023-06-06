@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload</title>
+    <script src="https://kit.fontawesome.com/689600d0a2.js" crossorigin="anonymous"></script>
+
+    <style>
+        .upload__container-main{
+            display: flex;
+            justify-content: space-around;
+            max-width: 1000px;
+            max-height: 400px;
+            margin: 100px auto;
+            padding: 20px;
+            background-color: #223843;
+            border-radius: 10px;
+        }
+
+        .upload__container-content{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            min-width: 200px;
+            min-height: 300px;
+            padding: 10px;
+        }
+
+        .upload__container-image{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-width: 200px;
+            min-height: 200px;
+            max-width: 200px;
+            max-height: 200px;
+            background-color: #A29C9B;
+            border-radius: 10px;
+        }
+
+        .upload__container-image img{
+            width: 100%;
+            object-fit: fill;
+        }
+
+        .upload__container-description{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-width: 600px;
+            padding: 10px;
+            color: white;
+        }
+
+        .upload__container-fields{
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .upload__field{
+            min-width: 300px;
+            padding: 10px 10px;
+            background: none;
+            color: white;
+            border: 1px solid #A29C9B;
+            border-radius: 10px;   
+        }
+
+        .upload__container-label{
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .upload__button{
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 10px;
+            background-color: #a0fd14;
+            color: white;
+        }
+
+        .upload__field-description{
+            min-height: 100px;
+            padding: 10px 10px;
+            background: none;
+            color: white;
+            border: 1px solid #A29C9B;
+            border-radius: 10px;
+            resize: none;
+        }
+
+        .upload__highlight{
+            border: 5px dashed #a0fd14;
+        }
+
+        .upload__file{
+            opacity: 0;
+        }
+
+    </style>
+    <script src="upload.js"></script>
+</head>
+<body>
+    <div class="upload__container-main">
+        <div class="upload__container-content">
+            <div class="upload__container-image">
+               
+            </div>
+            <input class="upload__file" type="file" name="uploaded-image" id="upload-file">
+            <button id="upload-button" class="upload__button">Upload</button>
+        </div>
+        <div class="upload__container-description">
+            <div class="upload__container-fields">
+                    <input id="upload-title" class="upload__field" type="text" name="title" placeholder="Title">
+                    <input id="upload-tags" class="upload__field" type="text" name="tags" placeholder="Tags">
+                    <textarea id="upload-description" class="upload__field-description" name="description" placeholder="Description"></textarea>
+            </div>
+            <button id="upload-button" class="upload__button">Post</button>
+        </div>
+    </div>
+</body>
+</html>
