@@ -168,7 +168,11 @@ body{
             padding: 10px;
         }
 
-/*End of Login and Register styling
+/*End of Login and Register styling*/
+
+.container{
+	display:flex;
+}
 
 /*Navigation Bar styling*/
 
@@ -273,7 +277,7 @@ body{
 	border-bottom-right-radius: 6px;
 	background-color: var(--primary-dark-color);
 	color: #fff;
-	overflow: hidden;
+	/* overflow: hidden; */
 	align-items: center;
 	animation: extend-filters 0.3s forwards;
 }
