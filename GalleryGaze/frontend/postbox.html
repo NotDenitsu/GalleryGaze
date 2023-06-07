@@ -1,0 +1,76 @@
+<html>
+    <style>
+        .postbox{
+            box-sizing: border-box;
+            position: relative;
+
+            width: 320px;
+            height: 320px;
+            
+            background-color: black;
+        }
+
+        .postbox__image{
+            width: 100%;
+            height: 100%;
+            object-fit:cover;
+        }
+        
+        .postbox__title{
+            position: absolute;
+            width: 80%;
+            height: 1em;
+
+            overflow:hidden;
+            text-overflow:ellipsis;
+
+            bottom: 0%;
+            left: 0%;
+
+            margin-left: 10px;
+            margin-bottom: 70px;
+
+        }
+
+        .postbox__user-name{
+            position:absolute;
+            height:1em;
+            width: 60%;
+
+            overflow:hidden;
+            text-overflow:ellipsis;
+
+            left:0%;
+            bottom:0%;
+
+            margin-bottom: 25px;
+            margin-left: 70px;
+        }
+        .postbox__user-image{
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            left:0%;
+            bottom:0%;
+            margin-left: 10px;
+            margin-bottom: 10px;
+        }
+
+        .postbox__date{
+            position: absolute;
+            bottom:0%;
+            right: 0%;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+    
+    <div class="postbox">
+        <img class="postbox__image" src="../static/images/horse.jpg" alt="dog">
+        <h2 class="postbox__title">Title example with a possible overflow if the text exceeds the limits</h2>
+        <img class="postbox__user-image" src="../static/images/cat.jpg" alt="cat">
+        <span class="postbox__user-name">Begula</span>
+        <time datetime="2023-01-01" class="postbox__date">01.01.2023</time>
+    </div>
+
+</html>
