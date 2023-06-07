@@ -11,12 +11,12 @@
         .upload__container-main{
             display: flex;
             justify-content: space-around;
+            margin: 20vh auto;
+            padding-top: 30px;
             max-width: 1000px;
             max-height: 400px;
-            margin: 100px auto;
-            padding: 20px;
-            background-color: #223843;
             border-radius: 10px;
+            background-color: #223843;
         }
 
         .upload__container-content{
@@ -27,23 +27,20 @@
             gap: 20px;
             min-width: 200px;
             min-height: 300px;
-            padding: 10px;
         }
 
         .upload__container-image{
             display: flex;
             justify-content: center;
             align-items: center;
-            min-width: 200px;
-            min-height: 200px;
-            max-width: 200px;
-            max-height: 200px;
+            max-width: 300px;
+            max-height: 300px;
             background-color: #A29C9B;
             border-radius: 10px;
         }
 
         .upload__container-image img{
-            width: 100%;
+            min-width: 300px;
             object-fit: fill;
         }
 
@@ -52,7 +49,7 @@
             flex-direction: column;
             justify-content: space-between;
             min-width: 600px;
-            padding: 10px;
+            max-height: 300px;
             color: white;
         }
 
@@ -63,12 +60,12 @@
         }
 
         .upload__field{
-            min-width: 300px;
             padding: 10px 10px;
+            min-width: 300px;
+            border: 1px solid #A29C9B;
+            border-radius: 10px;
             background: none;
             color: white;
-            border: 1px solid #A29C9B;
-            border-radius: 10px;   
         }
 
         .upload__container-label{
@@ -77,27 +74,42 @@
             gap: 5px;
         }
 
-        .upload__button{
-            width: 100%;
+        .upload__button-post{
             padding: 10px;
+            width: 100%;
             border: none;
             border-radius: 10px;
             background-color: #a0fd14;
             color: white;
         }
 
-        .upload__field-description{
-            min-height: 100px;
-            padding: 10px 10px;
+        .upload__button-upload{
+            min-width: 300px;
+            min-height: 300px;
+            border: none;
+            border-radius: 10px;
             background: none;
-            color: white;
+            font-size: 5em;
+            visibility: hidden;
+        }
+
+        .upload__container-image:hover .upload__button-upload{
+            cursor: pointer;
+            visibility: visible;
+        }
+
+        .upload__field-description{
+            padding: 10px 10px;
+            min-height: 100px;
             border: 1px solid #A29C9B;
             border-radius: 10px;
+            background: none;
+            color: white;
             resize: none;
         }
 
         .upload__highlight{
-            border: 5px dashed #a0fd14;
+            border: 3px dashed #a0fd14;
         }
 
         .upload__file{
@@ -111,10 +123,9 @@
     <div class="upload__container-main">
         <div class="upload__container-content">
             <div class="upload__container-image">
-               
+                <button id="upload-button" class="upload__button-upload"><i class="fa-solid fa-upload"></i></button>
             </div>
             <input class="upload__file" type="file" name="uploaded-image" id="upload-file">
-            <button id="upload-button" class="upload__button">Upload</button>
         </div>
         <div class="upload__container-description">
             <div class="upload__container-fields">
@@ -122,7 +133,7 @@
                     <input id="upload-tags" class="upload__field" type="text" name="tags" placeholder="Tags">
                     <textarea id="upload-description" class="upload__field-description" name="description" placeholder="Description"></textarea>
             </div>
-            <button id="upload-button" class="upload__button">Post</button>
+            <button id="upload-button" class="upload__button-post">Post</button>
         </div>
     </div>
 </body>
