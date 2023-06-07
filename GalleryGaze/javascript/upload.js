@@ -36,7 +36,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function handleFiles(files) {
       // Remove any existing images in the container
-      uploadContainer.innerHTML = '';
+      const previousImage = uploadContainer.querySelector("img");
+      if(previousImage){
+        previousImage.parentNode.removeChild(previousImage);
+      }
+
 
       // Get the first file from the files array
       const file = files[0];
