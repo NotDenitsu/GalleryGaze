@@ -29,18 +29,6 @@
 	border: 3px solid var(--scroll-bar-color);
 }
 
-/* Navigation Style */
-
-html,
-body {
-	font-family: 'Inter', sans-serif;
-}
-
-body {
-	margin: 0;
-	display: flex;
-}
-
 /*Login and Register styling*/
 
 .authentication__body {
@@ -172,8 +160,7 @@ body {
 
 .profile__container-main {
 	display: flex;
-	justify-content: space-between;
-	gap: 50px;
+	justify-content: space-around;
 	padding: 20px;
 	margin: 5vh auto;
 	max-width: 1400px;
@@ -194,7 +181,6 @@ body {
 	align-self: center;
 	min-width: 800px;
 	min-height: 500px;
-	border: 1px solid red;
 }
 
 .profile__content-text {
