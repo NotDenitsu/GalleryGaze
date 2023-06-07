@@ -1,41 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
-
-    <script src="https://kit.fontawesome.com/689600d0a2.js" crossorigin="anonymous"></script>
     <title>Sign In</title>
 
+
+
 </head>
-<body class="body--login">
-    <div class="login__container">
-        <div class="login__image--container">
-            <img class="login__image" src="horse.jpg">
+<body class="authentication__body">
+    <div class="authentication__container-main">
+        <div class="authentication__container-image">
+            <img class="authentication__image" src="../static/images/horse.jpg">
         </div>
-        <div class="login__form--container">
-            <h1>GalleryGaze</h1>
-            <form class="login__form" action="#" method="post">
-                <div class="login__form--icon-container">
-                    <input type="text" class="login__form--field" name="username" placeholder="Username">
-                    <i class="login__form--field-icon fa fa-solid fa-user"></i>
+        <div class="authentication__container-form">
+            <h1 class="authentication__title">GalleryGaze</h1>
+            <form class="authentication__form" action="#" method="post">
+                <div class="authentication__container-field">
+                    <input type="text" class="authentication__field" name="username" placeholder="Username">
+                    <i class="authentication__field-icon fa fa-solid fa-user"></i>
                 </div>
-                <div class="login__form--icon-container">
-                    
-                    <input type="password" class="login__form--field" name="password" placeholder="Password">
-                    <i class="login__form--field-icon fa fa-solid fa-lock"></i>
+                <div class="authentication__container-field">
+                    <input type="password" class="authentication__field" name="password" placeholder="Password">
+                    <i class="authentication__field-icon fa fa-solid fa-lock"></i>
                 </div>
                 
-                <button type="submit" name="login" class="login__form--button">Sign In</button>
+                <button type="submit" name="login" class="authentication__button-submit">Sign In</button>
             </form>
 
-            <label> Don't have an account? <a class="login__hyperlink" href="register.html">Sign Up</a></label>
+            <label>Don't have an account? <a class="authentication__link" href="login.html">Sign Up</a></label>
         </div>
     </div>
 </body>
+
 </html>
