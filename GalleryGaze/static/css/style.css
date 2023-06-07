@@ -430,8 +430,138 @@
 	opacity: 0;
 }
 
-
 /*End of Upload page styling*/
+
+/*Settings page styling*/
+
+.settings__container-main {
+	display: flex;
+	margin: 10vh auto;
+	max-width: 900px;
+	max-height: 600px;
+	background-color: #223843;
+	border-radius: 15px;
+	overflow: hidden;
+	color: white;
+}
+
+.settings__container-nav {
+	min-width: 300px;
+	min-height: 500px;
+	border-right: 1px solid #A29C9B;
+}
+
+.settings__container-profile {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	min-height: 200px;
+	min-width: 300px;
+	border-bottom: 1px solid #A29C9B;
+}
+
+.settings__container-options {
+	padding: 10px 30px;
+	min-width: 600px;
+	min-height: 500px;
+}
+
+.settings__container-pills {
+	max-height: 300px;
+}
+
+.settings__pill {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+	padding: 20px;
+	border-bottom: 1px solid #A29C9B;
+}
+
+.settings__pill:hover {
+	background-color: #DB324D;
+	cursor: pointer;
+	transition: all 0.3s;
+}
+
+.settings__avatar-frame {
+	max-width: 75px;
+	max-height: 75px;
+	border-radius: 50%;
+	border: 3px solid #A29C9B;
+	overflow: hidden;
+	object-fit: contain;
+}
+
+.settings__avatar {
+	min-width: 75px;
+	min-height: 75px;
+}
+
+.settings__container-fields {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	padding: 10px;
+	max-width: 500px;
+}
+
+.settings__title {
+	padding: 0;
+}
+
+.settings__options-section {
+	padding-left: 20px;
+}
+
+.settings__button-save {
+	align-self: flex-end;
+	padding: 10px 50px;
+	max-width: 200px;
+	border: none;
+	border-radius: 10px;
+	background-color: #a0fd14;
+	color: white;
+	text-align: center;
+}
+
+.settings__container-label {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+}
+
+.settings__field {
+	padding: 10px 10px;
+	min-width: 300px;
+	border: 1px solid #A29C9B;
+	border-radius: 10px;
+	background: none;
+	color: white;
+}
+
+.settings__field-bio {
+	padding: 10px;
+	min-height: 100px;
+	border: 1px solid #A29C9B;
+	border-radius: 10px;
+	background: none;
+	color: white;
+	resize: none;
+}
+
+.settings__security-options {
+	display: none;
+}
+
+.settings__selected {
+	display: block;
+}
+
+/*End of Settings page styling*/
+
 
 /*Navigation Bar styling*/
 

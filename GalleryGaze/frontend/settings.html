@@ -5,142 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Settings</title>
+    <link rel="stylesheet" href="../static/css/normalize.css">
+    <link rel="stylesheet" href="../static/css/style.css">
     <script src="https://kit.fontawesome.com/689600d0a2.js" crossorigin="anonymous"></script>
-
-    <style>
-        .settings__container-main{
-            display: flex;
-            margin: 15vh auto;
-            max-width: 900px;
-            max-height: 500px;
-            background-color: #223843;
-            border-radius: 15px;
-            overflow: hidden;
-            color: white;
-        }
-
-        .settings__container-nav{
-            min-width: 300px;
-            min-height: 500px;
-            border-right: 1px solid #A29C9B;
-        }
-
-        .settings__container-profile{
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            min-height: 200px;
-            min-width: 300px;
-            border-bottom: 1px solid #A29C9B;
-        }
-
-        .settings__container-options{
-            padding: 10px 30px;
-            min-width: 600px;
-            min-height: 500px;
-        }
-
-        .settings__container-pills{
-            max-height: 300px;
-        }
-
-        .settings__pill{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-            padding: 20px;
-            border-bottom: 1px solid #A29C9B;
-        }
-
-        .settings__pill:hover{
-            background-color: #DB324D;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .settings__avatar-frame{
-            max-width: 75px;
-            max-height: 75px;
-            border-radius: 50%;
-            border: 3px solid #A29C9B;
-            overflow: hidden;
-            object-fit: contain;
-        }
-
-        .settings__avatar{
-            min-width: 75px;
-            min-height: 75px;
-        }
-
-        .settings__container-fields{
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            padding: 10px;
-            max-width: 500px;
-        }
-
-        .settings__title{
-            padding: 0;
-        }
-
-        .settings__options-section{
-            padding-left: 20px;
-        }
-
-        .settings__button-save{
-            align-self: flex-end;
-            padding: 10px 50px;
-            max-width: 200px;
-            border: none;
-            border-radius: 10px;
-            background-color: #a0fd14;
-            color: white;
-            text-align: center;
-        }
-
-        .settings__container-label{
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-        }
-
-        .settings__field{
-            padding: 10px 10px;
-            min-width: 300px;
-            border: 1px solid #A29C9B;
-            border-radius: 10px;   
-            background: none;
-            color: white;
-        }
-
-        .settings__field-bio{
-            padding: 10px;
-            min-height: 100px;
-            border: 1px solid #A29C9B;
-            border-radius: 10px;
-            background: none;
-            color: white;
-            resize: none;
-        }
-
-        .settings__account-options{
-            /* display: none; */
-
-        }
-        .settings__security-options{
-            display: none;
-        }
-
-        .settings__selected{
-            display: block;
-        }
-
-    </style>
-
-    <script src="settings.js"></script>
+    <script src="../javascript/settings.js"></script>
+    
 </head>
 <body>
     <div class="settings__container-main">
@@ -160,6 +29,7 @@
             <div class="settings__account-options">
                 <h1 class="settings__title"> Account </h1>
                 <section class="settings__options-section">
+                    <h3 class="settings__section-title">Personal Information</h3>
                     <div class="settings__container-fields">
                         <div class="settings__container-label">
                             <label for="username-edit">Username</label>
