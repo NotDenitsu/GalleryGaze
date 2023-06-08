@@ -314,6 +314,125 @@
 
 /* End of Profile page styling*/
 
+/*Upload page styling*/
+
+.upload__container-main {
+	display: flex;
+	justify-content: space-around;
+	margin: 20vh auto;
+	padding-top: 30px;
+	max-width: 1000px;
+	max-height: 400px;
+	border-radius: 10px;
+	background-color: #223843;
+}
+
+.upload__container-content {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	gap: 20px;
+	min-width: 200px;
+	min-height: 300px;
+}
+
+.upload__container-image {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 300px;
+	height: 300px;
+	background-color: #A29C9B;
+	border-radius: 10px;
+	overflow: hidden;
+}
+
+.upload__container-image img {
+	min-width: 300px;
+	min-height: 300px;
+	object-fit: contain;
+}
+
+.upload__container-description {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	min-width: 500px;
+	max-height: 300px;
+	color: white;
+}
+
+.upload__container-fields {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+}
+
+.upload__field {
+	padding: 10px 10px;
+	max-width: 500px;
+	border: 1px solid #A29C9B;
+	border-radius: 10px;
+	background: none;
+	color: white;
+}
+
+.upload__container-label {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+}
+
+.upload__button-post {
+	padding: 10px;
+	width: 100%;
+	border: none;
+	border-radius: 10px;
+	background-color: #a0fd14;
+	color: white;
+}
+
+.upload__button-upload {
+	position: absolute;
+	top: 0;
+	width: 300px;
+	height: 300px;
+	border: none;
+	border-radius: 10px;
+	background: rgba(34, 56, 67, 0.3);
+	backdrop-filter: blur(10px);
+	font-size: 5em;
+	visibility: hidden;
+}
+
+.upload__container-image:hover .upload__button-upload {
+	cursor: pointer;
+	visibility: visible;
+}
+
+.upload__field-description {
+	padding: 10px 10px;
+	min-height: 100px;
+	border: 1px solid #A29C9B;
+	border-radius: 10px;
+	background: none;
+	color: white;
+	resize: none;
+}
+
+.upload__highlight {
+	border: 5px dashed #a0fd14;
+}
+
+.upload__file {
+	opacity: 0;
+}
+
+
+/*End of Upload page styling*/
+
 /*Navigation Bar styling*/
 
 .navigation {

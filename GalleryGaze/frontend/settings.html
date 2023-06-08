@@ -79,6 +79,7 @@
             flex-direction: column;
             gap: 20px;
             padding: 10px;
+            max-width: 500px;
         }
 
         .settings__title{
@@ -89,25 +90,15 @@
             padding-left: 20px;
         }
 
-        .settings__container-buttons{
-            display: flex;
-            justify-content: right;
-            gap: 20px;
-            padding: 20px;
-        }
-
-        .settings__button-edit{
-            padding: 10px 40px;
-            border: none;
-            border-radius: 10px;
-            background-color: #DB324D;
-        }
-
         .settings__button-save{
-            padding: 10px 40px;
+            align-self: flex-end;
+            padding: 10px 50px;
+            max-width: 200px;
             border: none;
             border-radius: 10px;
             background-color: #a0fd14;
+            color: white;
+            text-align: center;
         }
 
         .settings__container-label{
@@ -136,12 +127,10 @@
         }
 
         .settings__account-options{
-            display: none;
+            /* display: none; */
+
         }
         .settings__security-options{
-            display: none;
-        }
-        .settings__notifications-options{
             display: none;
         }
 
@@ -165,13 +154,12 @@
             <div class="settings__container-pills">
                 <div id="settings-account" class="settings__pill"><i class="fa fa-solid fa-user"> </i>Account</div>
                 <div id="settings-security" class="settings__pill"><i class="fa fa-solid fa-lock"> </i>Security</div>
-                <div id="settings-notifications" class="settings__pill"><i class="fa fa-solid fa-bell"> </i>Notifications</div>
             </div>
         </div>
         <div class="settings__container-options">
             <div class="settings__account-options">
                 <h1 class="settings__title"> Account </h1>
-                <section>
+                <section class="settings__options-section">
                     <div class="settings__container-fields">
                         <div class="settings__container-label">
                             <label for="username-edit">Username</label>
@@ -186,11 +174,9 @@
                             <label for="biography-edit">Biography</label>
                             <textarea id="biography-edit" class="settings__field-bio" name="biography"></textarea>
                         </div>
-                    </div>
-                    <div class="settings__container-buttons">
-                        <button class="settings__button-edit">Edit</button>
                         <button class="settings__button-save">Save</button>
                     </div>
+
                 </section>
             </div>
             <div class="settings__security-options">
@@ -212,16 +198,10 @@
                              <label for="repeat-new-password-edit">Repeat New Password</label>
                              <input id="repeat-new-password-edit" class="settings__field" type="password" name="repeat-new-password">
                          </div>
-                     </div>
-                     <div class="settings__container-buttons">
-                         <button class="settings__button-edit">Edit</button>
                          <button class="settings__button-save">Save</button>
                      </div>
                  </div>
                 </section>
-            <div class="settings__notifications-options">
-                <h1 class="settings__title"> </h1>
-            </div>
         </div>
     </div>
 </body>
