@@ -757,7 +757,7 @@
 
 /*Mobile and Tablet responsiveness*/
 
-@media only screen and (min-width: 769px) {
+@media only screen and (min-width: 769px) and (min-height: 571px) {
 	.navigation__tooltip {
 		position: absolute;
 		top: 0;
@@ -786,7 +786,10 @@
 }
 
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 768px) , (max-height: 570px) {
+
+	/*Navigation*/
+
 	.navigation {
 		flex-direction: row;
 		justify-content: space-between;
@@ -874,13 +877,57 @@
 			max-width: 600px;
 		}
 	}
+
+	/*Settings*/
+
+	.settings__container-main{
+		max-width: 600px;
+	}
+
+	.settings__container-nav{
+		max-width: 200px;
+		min-width: 200px;
+	}
+
+	.settings__container-profile{
+		max-width: 200px;
+		min-width: 200px;
+	}
+
+	.settings__container-pills{
+		max-width: 200px;
+		min-width: 200px;
+	}
+
+	.settings__container-options{
+		max-width: 400px;
+		min-width: 300px;
+	}
+
+	.settings__options-section{
+		padding: 0;
+	}
+
+	.settings__container-fields{
+		justify-content: left;
+		max-width: 400px;
+		min-width: 300px;
+	}
+
+	.settings__field-bio{
+		min-width: 300px;
+	}
+
+	.settings__button-save{
+		align-self: center;
+	}
+
+
 }
 
 @media only screen and (max-width: 480px) {
 
 	.navigation__container-query {
-		position: relative;
-		left: 0;
 		max-width: 200px;
 	}
 
@@ -892,4 +939,5 @@
 		min-width: 100px;
 		max-width: 150px;
 	}
+
 }
