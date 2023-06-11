@@ -1,88 +1,83 @@
 <nav class="navigation">
-        <ul class="navigation__list">
-          <li class="navigation__item">
-            <a href="#" class="navigation__link">
-              <i class="fas fa-search navigation__icon"></i>
-            </a>
-            <div class="navigation__search-filter-container">
-            <div class="navigation__search-bar hidden">
-                <div class="navigation__search-container">
-                    <input type="text" placeholder="Search...">
-                    <button><i class="fa-solid fa-magnifying-glass navigation__icon"></i></button>
-                </div>
-                <button id="filter"><i class="fa-solid fa-filter navigation__icon"></i></button>
+    <div class="navigation__container-query">
+        <div class="navigation__container-search hidden">
+            <div class="navigation__container-field">
+                <input class="navigation__search-field" type="text" placeholder="Search...">
+                <button class="navigation__button-search"><i class="fa-solid fa-magnifying-glass"></i></button>
             </div>
-            <div class="navigation__filters hidden">
-              <h3>Filters</h3>
-              <div class="navigation__filters-content" style="overflow:unset;">
-                  <select name="sorting_options" id="sorting_options" class="dropdown">
-                      <option value="">--Sorting options--</option>
-                      <option value="dateAsc">Upload date newer</option>
-                      <option value="dateDesc">Upload date older</option>
-                      <option value="likesAsc">Most likes</option>
-                      <option value="likesDesc">Least likes</option>
-                  </select>
-              </div>
-          </div>
-          <script src="../javascript/dropdown.js"></script>
-          </div>
-          </li>
-          <li class="navigation__item">
-            <a href="#" class="navigation__link">
-              <i class="fas fa-home navigation__icon"></i>
-            </a>
-            <span class="navigation__tooltip"><span class="navigation__tooltip-text">Home</span></span>
-          </li>
-          <li class="navigation__item">
-            <a href="#" class="navigation__link">
-              <i class="fas fa-user navigation__icon"></i>
-            </a>
-            <span class="navigation__tooltip"><span class="navigation__tooltip-text">Profile</span></span>
-          </li>
-          <li class="navigation__item">
-            <a href="#" class="navigation__link">
-              <i class="fas fa-envelope navigation__icon"></i>
-            </a>
-            <span class="navigation__tooltip"><span class="navigation__tooltip-text">Messages</span></span>
-          </li>
-          <li class="navigation__item">
-            <a href="#" class="navigation__link">
-              <i class="fas fa-tachometer-alt navigation__icon"></i>
-            </a>
-            <span class="navigation__tooltip"><span class="navigation__tooltip-text">Dashboard</span></span>
-          </li>
-          <li class="navigation__item">
-            <a href="#" class="navigation__link">
-              <i class="fas fa-heart navigation__icon"></i>
-            </a>
-            <span class="navigation__tooltip"><span class="navigation__tooltip-text">Liked Posts</span></span>
-          </li>
-          <li class="navigation__item">
-            <a href="#" class="navigation__link">
-              <i class="fas fa-upload navigation__icon"></i>
-            </a>
-            <span class="navigation__tooltip"><span class="navigation__tooltip-text">Upload</span></span>
-          </li>
-          <li class="navigation__item">
-            <a href="#" class="navigation__link">
-              <i class="fas fa-cog navigation__icon"></i>
-            </a>
-            <span class="navigation__tooltip"><span class="navigation__tooltip-text">Settings</span></span>
-          </li>
-          <li class="navigation__item">
-            <a href="#" class="navigation__link">
-              <i class="fa-solid fa-right-from-bracket navigation__icon"></i>
-            </a>
-            <span class="navigation__tooltip"><span class="navigation__tooltip-text">Log Out</span></span>
-          </li>
- 
-          <li class="navigation__item">
-            <a href="#" class="navigation__link">
-              <i class="fas fa-info-circle navigation__icon"></i>
-            </a>
-            <span class="navigation__tooltip"><span class="navigation__tooltip-text">Info</span></span>
-          </li>
+            <button id="filters-button" class="navigation__button-filters"><i class="fa-solid fa-filter"></i></button>
+        </div>
+        <div class="navigation__container-filters hidden">
+            <div class="navigation__container-sort">
+                <h3>Sort By</h3>
+                <div class="navigation__container-options">
+                    <label class="navigation__sort-option">
+                        <input type="radio" name="sort_by" value="date-newest"> Upload Date -Newest
+                    </label>
+                    <label class="navigation__sort-option">
+                        <input type="radio" name="sort_by" value="date-oldest"> Upload Date - Oldest
+                    </label>
+                    <label class="navigation__sort-option">
+                        <input type="radio" name="sort_by" value="likes-most"> Most Liked
+                    </label>
+                    <label class="navigation__sort-option">
+                        <input type="radio" name="sort_by" value="likes-least">Least Liked
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="navigation__container-list">
+        <ul class="navigation__list">
+            <li class="navigation__item">
+                <a href="#" class="navigation__link"><i class="fas fa-search"></i></a>
+            </li>
+            <li class="navigation__item">
+                <a href="#" class="navigation__link"><i class="fas fa-home"></i><span
+                        class="navigation__text">Home</span></a>
+                <span class="navigation__tooltip">Home</span>
+            </li>
+            <li class="navigation__item">
+                <a href="#" class="navigation__link"><i class="fas fa-user"></i><span
+                        class="navigation__text">Profile</span></a>
+                <span class="navigation__tooltip">Profile</span>
+            </li>
+            <li class="navigation__item">
+                <a href="#" class="navigation__link"><i class="fas fa-tachometer-alt"></i><span
+                        class="navigation__text">Dashboard</span></a>
+                <span class="navigation__tooltip">Dashboard</span>
+            </li>
+            <li class="navigation__item">
+                <a href="#" class="navigation__link"><i class="fas fa-envelope"></i><span
+                        class="navigation__text">Messages</span></a>
+                <span class="navigation__tooltip">Messages</span>
+            </li>
+            <li class="navigation__item">
+                <a href="#" class="navigation__link"><i class="fas fa-heart"></i><span
+                        class="navigation__text">Favourites</span></a>
+                <span class="navigation__tooltip">Favourites</span>
+            </li>
+            <li class="navigation__item">
+                <a href="#" class="navigation__link"><i class="fas fa-upload"></i><span
+                        class="navigation__text">Upload</span></a>
+                <span class="navigation__tooltip">Upload</span>
+            </li>
+            <li class="navigation__item">
+                <a href="#" class="navigation__link"><i class="fas fa-cog"></i><span
+                        class="navigation__text">Settings</span></a>
+                <span class="navigation__tooltip">Settings</span>
+            </li>
+            <li class="navigation__item">
+                <a href="#" class="navigation__link"><i class="fas fa-right-from-bracket"></i><span
+                        class="navigation__text">Log Out</span></a>
+                <span class="navigation__tooltip">Log Out</span>
+            </li>
+            <li class="navigation__item">
+                <a href="#" class="navigation__link"><i class="fas fa-info-circle"></i><span
+                        class="navigation__text">Info</span></a>
+                <span class="navigation__tooltip">Info</span>
+            </li>
         </ul>
-        
-        <img class="navigation__logo" src="gglogo.svg" alt="Logo">
-      </nav>
+    </div>
+    <button class="navigation__button-bars"><i class="fas fa-bars"></i></button>
+</nav>

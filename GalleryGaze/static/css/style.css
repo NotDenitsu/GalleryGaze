@@ -619,7 +619,7 @@
 	gap: 5px;
 	padding: 5px;
 	max-width: 0px;
-	min-height: 50px;
+	max-height: 50px;
 	background-color: #223843;
 	animation: extend-search 0.3s forwards;
 	overflow: hidden;
@@ -816,7 +816,7 @@
 	}
 
 	.navigation__search-field {
-		min-width: 250px;
+		min-width: 300px;
 	}
 
 	.navigation__container-filters {
@@ -873,5 +873,23 @@
 		to {
 			max-width: 600px;
 		}
+	}
+}
+
+@media only screen and (max-width: 480px) {
+
+	.navigation__container-query {
+		position: relative;
+		left: 0;
+		max-width: 200px;
+	}
+
+	.navigation__container-search {
+		min-width: 200px;
+	}
+
+	.navigation__search-field {
+		min-width: 100px;
+		max-width: 150px;
 	}
 }
