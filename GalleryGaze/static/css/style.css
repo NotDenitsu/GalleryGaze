@@ -28,6 +28,16 @@
 	border-radius: 10px;
 	border: 3px solid var(--scroll-bar-color);
 }
+/*Universal styling*/
+
+.container{
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+/*End of universal styling*/
 
 /*Login and Register styling*/
 
@@ -39,9 +49,8 @@
 .authentication__container-main {
 	display: flex;
 	justify-content: space-between;
-	margin: 5vh auto;
 	max-width: 1000px;
-	max-height: 600px;
+	max-height: 650px;
 }
 
 .authentication__container-image {
@@ -56,6 +65,7 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	align-items: center;
 	padding: 30px;
 	min-width: 400px;
 	border-top-right-radius: 10px;
@@ -63,7 +73,6 @@
 	overflow: hidden;
 	background: #223843;
 	color: white;
-	text-align: center;
 }
 
 .authentication__image {
@@ -77,19 +86,22 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	gap: 0;
+	max-height: 450px;
 }
 
 .authentication__title {
-	margin-bottom: 50px;
+	margin-bottom: 20px;
 }
 
 .authentication__field {
 	padding: 10px;
-	margin-bottom: 40px;
+	max-width: 250px;
 	min-width: 250px;
 	border: none;
 	border-bottom: 2px solid white;
 	background: none;
+	color:white;
 	outline: none;
 	caret-color: white;
 	font-size: 1em;
@@ -103,13 +115,13 @@
 }
 
 .authentication__field:focus {
-	border-color: #DB324D;
+	border-color: #D77A61;
 	transition: all 0.3s;
 }
 
 .authentication__field:focus::placeholder,
 .authentication__field:focus+.authentication__field-icon {
-	color: #DB324D;
+	color: #D77A61;
 	transition: all 0.3s;
 }
 
@@ -142,9 +154,14 @@
 	text-decoration: underline #DB324D;
 }
 
-.authentication__container-field {
+.authentication__container-icon {
 	position: relative;
-	max-width: 250px;
+	max-width: 300px;
+}
+
+.authentication__container-field {
+	max-height: 100px;
+	margin-bottom: 40px;
 }
 
 .authentication__field-icon {
@@ -154,15 +171,64 @@
 	padding: 10px;
 }
 
+.authentication__error-box{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 10px;
+	max-width: 300px;
+	min-width: 300px;
+	min-height: 40px;
+	background-color: red;
+	color: white;
+	border: red;
+	border-radius: 10px;
+	text-align: center;
+	animation: extend-error 0.3s forwards;
+}
+
+.authentication__invalid-field{
+	border-color: red;
+}
+
+
+.authentication__invalid-icon, 
+.authentication__invalid-field::placeholder,
+.authentication__invalid-field:not(:focus){
+	color: red;
+}
+
+.authentication__error-message{
+	padding: 0 10px;
+	color: red;
+}
+
+@keyframes extend-error {
+	0% {
+		opacity: 0;
+		visibility: hidden;
+		transform: translate(-50%);
+	  }
+	  50% {
+		opacity: 1;
+		visibility: visible;
+	  }
+	  100% {
+		opacity: 1;
+		visibility: visible;
+		transform: translate(0);
+	  }
+}
+
 /*End of Login and Register page styling*/
 
 /* Profile page styling*/
 
 .profile__container-main {
 	display: flex;
-	justify-content: space-around;
+	justify-content: space-between;
+	gap: 50px;
 	padding: 20px;
-	margin: 5vh auto;
 	max-width: 1400px;
 	max-height: 600px;
 }
@@ -319,7 +385,6 @@
 .upload__container-main {
 	display: flex;
 	justify-content: space-around;
-	margin: 20vh auto;
 	padding-top: 30px;
 	max-width: 1000px;
 	max-height: 400px;
@@ -567,6 +632,7 @@
 
 .navigation {
 	position: relative;
+	z-index: 9999;
 	display: flex;
 	flex-direction: column;
 	align-items: center;

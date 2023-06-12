@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +17,7 @@
 </head>
 <body>
 
-      <?php include "navigation.php"?>
+      <?php include "../templates/navigation.php"?>
 
       <div class="container">
 

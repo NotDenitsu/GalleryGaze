@@ -9,9 +9,11 @@
     <link rel="stylesheet" href="../static/css/normalize.css">
     <link rel="stylesheet" href="../static/css/style.css">
     <script src="https://kit.fontawesome.com/689600d0a2.js" crossorigin="anonymous"></script>
+    <script src="../javascript/navigation.js"></script>
 </head>
 <body>
-    <div class="profile__container-main">
+    <?php include "../templates/navigation.php";?>
+    <div class="profile__container-main container">
             <div class="profile__container-details">
                 <div class="profile__container-details-box">
                     <div class="profile__container-user">
