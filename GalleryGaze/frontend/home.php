@@ -128,24 +128,7 @@
             margin-bottom: 10px;
         }
 
-        .container{
-            display:flex;
-            justify-content: space-between;
-            gap: 80px;
-        }
-
-        .container__posts{
-            width: 100%;
-            padding-top: 50px;
-            display:grid;
-            grid-template-columns: repeat(auto-fit, 320px);
-            grid-auto-rows: 320px;
-            row-gap: 6px;
-            gap: 6px;
-            overflow:hidden;
-            overflow-y:scroll;
-        }
-
+    
     </style>
 
     <script src="../javascript/navigation.js"></script>
@@ -153,13 +136,18 @@
 </head>
 <body>
 
-      <?php include "../templates/navigation.php"?>
+        
+        
+      <div class="main-container">
 
-      <div class="container">
+        <?php
+            include "../templates/navigation.php";
+            include "../backend/connection.php"; 
+        ?>
 
         <!-- <img src="logo.svg" alt="Logo">
         <object data="logo.svg" type="image/svg+xml"></object> -->
-        <div class="container__posts">
+        <div class="main-container__posts">
         <?php 
                 //Load all pictures available
                 $query = "SELECT * FROM posts";

@@ -812,6 +812,29 @@
 	display: none;
 }
 
+
+/*HOME PAGE*/
+.main-container{
+	display:flex;
+	flex-direction:row;
+	justify-content: space-between;
+	gap: 80px;
+}
+
+.main-container__posts{
+	width: 100%;
+	height: 100vh;
+	padding-top: 50px;
+	display:grid;
+	grid-template-columns: repeat(auto-fit, 320px);
+	grid-auto-rows: 320px;
+	row-gap: 6px;
+	gap: 6px;
+
+	overflow:hidden;
+	overflow-y: scroll;
+}
+
 @keyframes extend-tooltip {
 	from {
 		max-width: 0;
@@ -877,6 +900,23 @@
 
 
 @media only screen and (max-width: 768px) , (max-height: 570px) {
+
+	/*Main page*/
+	.main-container{
+		display: flex;
+		flex-direction: column;
+		gap:0px;
+		margin-inline: auto;
+		overflow:hidden;
+		overflow-y:hidden;
+	}
+
+	.main-container__posts{
+		width: 100%;
+		height: 100vh;
+		justify-content: center;
+
+	}
 
 	/*Navigation*/
 
