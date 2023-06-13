@@ -1,3 +1,4 @@
+
 <nav class="navigation">
     <div class="navigation__container-query">
         <div class="navigation__container-search hidden">
@@ -63,12 +64,12 @@
                 <span class="navigation__tooltip">Upload</span>
             </li>
             <li class="navigation__item">
-                <a href="#" class="navigation__link"><i class="fas fa-cog"></i><span
+                <a href="settings.php" class="navigation__link"><i class="fas fa-cog"></i><span
                         class="navigation__text">Settings</span></a>
                 <span class="navigation__tooltip">Settings</span>
             </li>
             <li class="navigation__item">
-                <a href="#" class="navigation__link"><i class="fas fa-right-from-bracket"></i><span
+                <a href="../backend/logout.php" class="navigation__link"><i class="fas fa-right-from-bracket"></i><span
                         class="navigation__text">Log Out</span></a>
                 <span class="navigation__tooltip">Log Out</span>
             </li>

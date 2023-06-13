@@ -1,3 +1,7 @@
+<?php 
+    include "../backend/loadprofile.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,17 +25,15 @@
                             <img class="profile__avatar" src="cry.png">
                         </div>
                         <div class="profile__container-stats">
-                            <h3 class="profile__username">Denitsu</h3>
-                            <h4 class="profile__details-text">Followers: 3k+</h4>
-                            <h4 class="profile__details-text">Following: 27</h4>
+                            <h3 class="profile__username"><?=@$username?></h3>
+                            <h4 class="profile__details-text">Followers: <?=@$followersCount?></h4>
+                            <h4 class="profile__details-text">Following: <?=@$followingCount?></h4>
                         </div>
                     </div>
                     <button class="profile__button-report"><i class="fa fa-solid fa-circle-exclamation"></i></button>
                 </div>
                 <div class="profile__container-details-box">
-                    <p class="profile__container-biography">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis ullam voluptatum sed,
-                        iusto atque voluptate esse suscipit! Odit, tenetur amet assumenda maiores,
-                        quod ab facere quo ex enim quas voluptatibus.</p>
+                    <p class="profile__container-biography"><?=@$biography?></p>
                 </div>
                 <div class="profile__container-buttons">
                     <button class="profile__button-follow">Follow</button>
@@ -39,7 +41,7 @@
                 </div>
             </div>          
         <div class="profile__container-content">
-            <h2 class="profile__content-text">Posts 437</h2>
+            <h2 class="profile__content-text">Posts <?=@$postsCount?></h2>
             <div class="profile__container-posts">
 
             </div>
