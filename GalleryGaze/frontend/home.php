@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -144,13 +148,15 @@
 
     </style>
 
+    <script src="../javascript/navigation.js"></script>
     <script src="https://kit.fontawesome.com/689600d0a2.js" crossorigin="anonymous"></script>
 </head>
 <body>
-      <?php include "connection.php"?>
-      
+
+      <?php include "../templates/navigation.php"?>
+
       <div class="container">
-        <?php include "navigation.php"?>
+
         <!-- <img src="logo.svg" alt="Logo">
         <object data="logo.svg" type="image/svg+xml"></object> -->
         <div class="container__posts">
@@ -209,8 +215,5 @@
         
 
       </div>
-
-      <script src="../javascript/searchbar.js"></script>
-
 </body>
 </html>
