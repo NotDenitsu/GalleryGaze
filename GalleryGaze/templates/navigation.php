@@ -34,12 +34,12 @@
                 <a href="#" class="navigation__link"><i class="fas fa-search"></i></a>
             </li>
             <li class="navigation__item">
-                <a href="#" class="navigation__link"><i class="fas fa-home"></i><span
+                <a href="home.php" class="navigation__link"><i class="fas fa-home"></i><span
                         class="navigation__text">Home</span></a>
                 <span class="navigation__tooltip">Home</span>
             </li>
             <li class="navigation__item">
-                <a href="#" class="navigation__link"><i class="fas fa-user"></i><span
+                <a href="profile.php?id=<?=@$_SESSION['user']['id']?>" class="navigation__link <?php if(!isset($_SESSION['user'])) echo "hidden"?>"><i class="fas fa-user"></i><span
                         class="navigation__text">Profile</span></a>
                 <span class="navigation__tooltip">Profile</span>
             </li>
@@ -59,7 +59,7 @@
                 <span class="navigation__tooltip">Favourites</span>
             </li>
             <li class="navigation__item">
-                <a href="#" class="navigation__link"><i class="fas fa-upload"></i><span
+                <a href="upload.php" class="navigation__link"><i class="fas fa-upload"></i><span
                         class="navigation__text">Upload</span></a>
                 <span class="navigation__tooltip">Upload</span>
             </li>
@@ -70,8 +70,8 @@
             </li>
             <li class="navigation__item">
                 <a href="../backend/logout.php" class="navigation__link"><i class="fas fa-right-from-bracket"></i><span
-                        class="navigation__text">Log Out</span></a>
-                <span class="navigation__tooltip">Log Out</span>
+                        class="navigation__text"><?php if(isset($_SESSION['user'])){ echo "Log Out";} else { echo "Log In";}?></span></a>
+                <span class="navigation__tooltip"><?php if(isset($_SESSION['user'])){ echo "Log Out";} else { echo "Log In";}?></span>
             </li>
             <li class="navigation__item">
                 <a href="#" class="navigation__link"><i class="fas fa-info-circle"></i><span

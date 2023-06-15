@@ -15,7 +15,7 @@
 
 <body>
     <?php include "../templates/navigation.php" ?>
-    <div class="upload__container-main container">
+    <form class="upload__container-main container" method="post">
             <div class="upload__container-content">
                 <div class="upload__container-image">
                     <button id="upload-button" class="upload__button-upload"><i class="fa-solid fa-upload"></i></button>
@@ -29,8 +29,8 @@
                     <textarea id="upload-description" class="upload__field-description" name="description"
                         placeholder="Description"></textarea>
                 </div>
-                <button id="upload-button" class="upload__button-post">Post</button>
+                <button id="upload-button" class="upload__button-post" type="submit" name="upload">Post</button>
             </div>
-    </div>
+    </form>
 </body>
 </html>
