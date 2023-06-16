@@ -526,7 +526,7 @@ body {
 
 /*Settings page styling*/
 
-.settings__container-main {
+.settings-container{
 	display: flex;
 	max-width: 900px;
 	max-height: 600px;
@@ -534,15 +534,16 @@ body {
 	border-radius: 15px;
 	overflow: hidden;
 	color: white;
+	margin: auto;
 }
 
-.settings__container-nav {
+.settings-container__nav {
 	min-width: 300px;
 	min-height: 500px;
 	border-right: 1px solid #A29C9B;
 }
 
-.settings__container-profile {
+.settings-container__nav-profile {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -836,6 +837,7 @@ body {
 .hidden {
 	display: none;
 }
+
 
 /*HOME PAGE*/
 .main-container {

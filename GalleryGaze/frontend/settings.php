@@ -27,11 +27,11 @@ if (!isset($_SESSION['user'])) {
 
 </head>
 
-<body>
+<body class="main-container">
     <?php include "../templates/navigation.php" ?>
-    <div class="settings__container-main container">
-        <div class="settings__container-nav">
-            <div class="settings__container-profile">
+    <div class="settings-container">
+        <div class="settings-container__nav">
+            <div class="settings-container__nav-profile">
                 <div class="settings__avatar-frame">
                     <img src="../static/assets/images/default-avatar.jpg" class="settings__avatar" alt="">
                     <button class="settings__button-add-photo"><i class="fa-sharp fa-regular fa-image"></i></button>
