@@ -14,7 +14,7 @@ include "../backend/loadprofile.php";
 
     <link rel="stylesheet" href="../static/css/normalize.css">
     <link rel="stylesheet" href="../static/css/style.css">
-    <script src="https://kit.fontawesome.com/689600d0a2.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../static/assets/icons/fontawesome/css/all.min.css">
     <script src="../javascript/navigation.js"></script>
 </head>
 
