@@ -30,7 +30,7 @@
             justify-content: center;
             align-items: center;
             width: 100%;
-            height: 100%;
+            height: 600px;
             border-radius: 10px;
             background-color: #A29C9B;
             overflow: hidden;
@@ -216,9 +216,9 @@
         }
 
         .comment-field__content-field {
-            height: 35px;
-
-            padding: 5px;
+            height: 40px;
+            max-height: 150px;
+            padding: 10px;
             margin-bottom: 10px;
             resize: none;
             border: none;
@@ -324,9 +324,10 @@
 </head>
 
 <body>
+    <?php include "../templates/navigation.php";?>
     <div class="post">
         <div class="post__imagebox">
-            <img class="post__imagebox-image" src="burgir.jpg" alt="">
+            <img class="post__imagebox-image" src="../static/assets/images/horse.jpg" alt="">
         </div>
         <div class="post__interactables">
             <h1 class="post__interactables-title">Boring ahh image</h1>
@@ -373,7 +374,7 @@
 
                 <form class="comment-field">
                     <div class="comment-field__frame">
-                        <img class="comment-field__frame-avatar" src="cat.jpg" alt="">
+                        <img class="comment-field__frame-avatar" src="" alt="">
                     </div>
                     <div class="comment-field__content">
                         <div class="comment-field__content-username">Begula</div>
