@@ -191,7 +191,7 @@
                     <!-- <img  src="../static/icons/download-solid.svg"> -->
             
                     <h2 class="postbox__title"><?=$title?></h2>
-                    <a href=""><img class="postbox__user-image" src="../static/images/<?=$userImageUrl?>" href="www.google.com" alt="<?=$userName?>"></a>
+                    <a href=""><img class="postbox__user-image" src="../static/assets/images/<?=$userImageUrl?>" href="www.google.com" alt="<?=$userName?>"></a>
                     <a class="postbox__user-name" href=""><?=$userName?></a>
                     <time datetime="<?=$uploadDate?>" class="postbox__date"><?=$uploadDate?></time>
                 </div>

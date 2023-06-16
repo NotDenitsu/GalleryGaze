@@ -907,15 +907,18 @@
 		flex-direction: column;
 		gap:0px;
 		margin-inline: auto;
-		overflow:hidden;
-		overflow-y:hidden;
+		overflow:visible;
+		overflow-y:auto;	
+		/* overflow-y:hidden; */
 	}
 
 	.main-container__posts{
 		width: 100%;
 		height: 100vh;
 		justify-content: center;
-
+		overflow:visible;
+		overflow-y:auto;
+		padding:0px;
 	}
 
 	/*Navigation*/
@@ -924,7 +927,7 @@
 		flex-direction: row;
 		justify-content: space-between;
 		align-items: center;
-		margin-bottom: 50px;
+		margin-bottom: 0px;
 		max-height: 50px;
 		max-width: 100vw;
 	}
