@@ -1021,12 +1021,12 @@ body{
 	}
 
 	.upload__container-main {
-		max-width: 600px;
-		min-width: 480px;
-		max-height: 800px;
 		flex-direction: column;
 		align-items: stretch;
 		gap: 20px;
+		max-width: 600px;
+		min-width: 480px;
+		max-height: 800px;
 	}
 
 	.upload__container-content, .upload__container-description{
