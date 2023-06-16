@@ -11,7 +11,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="../static/css/normalize.css">
     <link rel="stylesheet" href="../static/css/style.css">
-
+    <link rel="stylesheet" href="../static/assets/icons/fontawesome/css/all.min.css">
     <style>
         .postbox{
             box-sizing: border-box;
@@ -130,9 +130,7 @@
 
     
     </style>
-
     <script src="../javascript/navigation.js"></script>
-    <script src="https://kit.fontawesome.com/689600d0a2.js" crossorigin="anonymous"></script>
 </head>
 <body class="main-container">
         <?php

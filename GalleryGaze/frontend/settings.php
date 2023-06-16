@@ -24,7 +24,6 @@ if (!isset($_SESSION['user'])) {
     <link rel="stylesheet" href="../static/assets/icons/fontawesome/css/all.min.css">
     <script src="../javascript/settings.js"></script>
     <script src="../javascript/navigation.js"></script>
-    <script src="../javascript/logout.js"></script>
 
 </head>
 
