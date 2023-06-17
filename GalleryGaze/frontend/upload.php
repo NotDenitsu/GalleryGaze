@@ -1,3 +1,10 @@
+<?php
+    session_start();
+
+    if(!isset($_SESSION['user'])){
+        header("location: login.php");
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,12 +22,13 @@
 
 <body>
     <?php include "../templates/navigation.php" ?>
-    <form class="upload__container-main container" method="post">
+    <div class="main-container">
+        <form class="upload__container-main"  action="../backend/upload_post.php" method="post" enctype="multipart/form-data">
             <div class="upload__container-content">
                 <div class="upload__container-image">
-                    <button id="upload-button" class="upload__button-upload"><i class="fa-solid fa-upload"></i></button>
+                    <button id="upload-button" class="upload__button-upload" type="button"><i class="fa-solid fa-upload"></i></button>
                 </div>
-                <input class="upload__file" type="file" name="uploaded-image" id="upload-file">
+                <input class="upload__file" type="file" name="imageToUpload" id="upload-file">
             </div>
             <div class="upload__container-description">
                 <div class="upload__container-fields">
@@ -31,6 +39,8 @@
                 </div>
                 <button id="upload-button" class="upload__button-post" type="submit" name="upload">Post</button>
             </div>
-    </form>
+        </form>
+    </div>
 </body>
+
 </html>

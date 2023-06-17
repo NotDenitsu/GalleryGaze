@@ -1,5 +1,5 @@
 <div class="postbox">
-    <a class="postbox__image" href="post.php?id=<?=$postId?>"><img class="postbox__image-img" src="../static/images/<?=@$postImageUrl?>" alt="<?=@$postTitle?>"></a>
+    <a class="postbox__image" href="post.php?id=<?=$postId?>"><img class="postbox__image-img" src="../static/assets/images/<?=@$postImageUrl?>" alt="<?=@$postTitle?>"></a>
             
     <!-- Heart icon -->
      <svg class="postbox__icon postbox__icon--left postbox__icon--top-margin1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">

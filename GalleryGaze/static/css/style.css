@@ -43,6 +43,9 @@ body {
 	background-image: url("../assets/images/background.jpg");
 	background-size: cover;
 	background-repeat: no-repeat;
+	background-attachment: fixed;
+	height: 100%;
+	overflow: hidden;
 }
 
 /*End of universal styling*/
@@ -232,59 +235,65 @@ body {
 .profile__container {
 	box-sizing: border-box;
 	display: flex;
-	flex-grow:1;
+	flex-grow: 1;
 	/*justify-content: space-between;*/
 	gap: 50px;
 
-	max-width: 1400px;
-	max-height: 600px;
+	max-width: 1200px;
+	min-height: 500px;
+	max-height: 500px;
+
 
 	margin: auto;
 }
 
 .profile__container-content {
 	display: flex;
-	flex-direction:column;
-	flex-grow:1;
-	
-	min-width: 300px;
-	min-height: 600px;
+	flex-direction: column;
+
+
+	width: 100%;
+
+
 	box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4);
 	border-radius: 10px;
 	background-color: #223843;
 
-	padding:10px;
+	padding: 10px;
 }
 
 .profile__container-content-posts {
 	width: 100%;
+	height: 100%;
 
 	display: grid;
 	grid-template-columns: repeat(auto-fit, 320px);
 	grid-auto-rows: 320px;
-	gap:10px;
+	gap: 10px;
 
-	overflow:hidden;
-	overflow-y:scroll;
+	overflow: hidden;
+	overflow-y: scroll;
 
 	justify-content: center;
 }
 
 .profile__container-content-text {
-	width:100%;
+	width: 100%;
 	color: white;
 	font-size: 2em;
 	text-indent: 1em;
+	white-space: nowrap;
 }
 
 .profile__container-details {
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
+	flex-grow: 1;
 	gap: 20px;
 	padding: 30px;
 	max-width: 600px;
-	min-height: 600px;
+	min-height: 100%;
 	border-radius: 10px;
 	box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4);
 	background-color: #223843;
@@ -326,10 +335,12 @@ body {
 .profile__username {
 	margin-top: 0;
 	font-size: 1.5em;
+	white-space: nowrap;
 }
 
 .profile__details-text {
 	font-size: 1em;
+	white-space: nowrap;
 }
 
 .profile__container-stats {
@@ -409,6 +420,7 @@ body {
 	align-items: center;
 	gap: 50px;
 	padding: 30px;
+	margin: 50px auto;
 	max-width: 1000px;
 	min-width: 750px;
 	max-height: 400px;
@@ -519,17 +531,17 @@ body {
 
 .upload__file {
 	position: absolute;
-	opacity: 0;
+	visibility: hidden;
 }
 
 /*End of Upload page styling*/
 
 /*Settings page styling*/
 
-.settings-container{
+.settings-container {
 	display: flex;
 	max-width: 900px;
-	max-height: 600px;
+	max-height: 600px;	
 	background-color: #223843;
 	border-radius: 15px;
 	overflow: hidden;
@@ -681,7 +693,9 @@ body {
 /*Navigation Bar styling*/
 
 .navigation {
-	position: relative;
+	position: fixed;
+	left: 0;
+	top: 0;
 	z-index: 9999;
 	display: flex;
 	flex-direction: column;
@@ -841,32 +855,34 @@ body {
 
 /*HOME PAGE*/
 .main-container {
+	width: calc(100vw - 50px);
+	height: 100vh;
 	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	gap: 80px;
+	align-items: center;
+	overflow-y: scroll;
+	margin-left: 50px;
 }
 
-.main-container--post{
-	flex:1 1 100%;
+.main-container__home{
+	flex-direction: column;
+	justify-content: space-between;
+	gap: 50px;
 }
-.main-container--profile {
-	justify-content: start;
-	gap: 0px;
+
+.main-container--post {
+	flex: 1 1 100%;
 }
+
 
 .main-container__posts {
 	width: 100%;
-	height: 100vh;
-	padding-top: 50px;
 	display: grid;
 	grid-template-columns: repeat(auto-fit, 320px);
 	grid-auto-rows: 320px;
 	row-gap: 6px;
 	gap: 6px;
+	justify-content: center;
 
-	overflow: hidden;
-	overflow-y: scroll;
 }
 
 @keyframes extend-tooltip {
@@ -938,22 +954,25 @@ body {
 
 	/*Main page*/
 	.main-container {
-		display: flex;
+		height: calc(100vh - 50px);
+		width: 100vw;
 		flex-direction: column;
-		gap: 0px;
-		margin-inline: auto;
-		overflow: visible;
-		overflow-y: auto;
-		/* overflow-y:hidden; */
+		align-items: start;
+		margin-left: 0;
+		margin-top: 50px;
+		overflow-y: scroll;
+	}
+
+	.main-container__home{
+		align-items: normal;
 	}
 
 	.main-container__posts {
 		width: 100%;
-		height: 100vh;
 		justify-content: center;
-		overflow: visible;
-		overflow-y: auto;
 		padding: 0px;
+		margin-left: 0px;
+		margin-top: 50px;
 	}
 
 	/*Navigation*/
@@ -965,6 +984,7 @@ body {
 		margin-bottom: 0px;
 		max-height: 50px;
 		max-width: 100vw;
+		width: 100vw;
 	}
 
 	.navigation__item {
@@ -1049,16 +1069,19 @@ body {
 
 	/*Settings*/
 
-	.settings__container-main {
+	.settings-container {
+		margin-top: 20px;
+		margin-bottom: 20px;
+		max-height: 500px;
 		max-width: 600px;
 	}
 
-	.settings__container-nav {
-		max-width: 200px;
+	.settings-container__nav {
 		min-width: 200px;
+		max-width: 200px;
 	}
 
-	.settings__container-profile {
+	.settings-container__nav-profile {
 		max-width: 200px;
 		min-width: 200px;
 	}
@@ -1069,8 +1092,8 @@ body {
 	}
 
 	.settings__container-options {
+		min-width: 400px;
 		max-width: 400px;
-		min-width: 300px;
 	}
 
 	.settings__options-section {
@@ -1093,7 +1116,6 @@ body {
 
 	.upload__container-main {
 		flex-direction: column;
-		align-items: stretch;
 		gap: 20px;
 		max-width: 600px;
 		min-width: 480px;
@@ -1132,9 +1154,17 @@ body {
 
 	/*Profile page*/
 	.profile__container {
+		min-height: none;
+		max-height: 1400px;
 		display: flex;
 		flex-direction: column;
-		gap:10px;
+		margin: 50px auto;
+
+		gap: 10px;
+	}
+
+	.profile__container-content {
+		max-height: 700px;
 	}
 
 	.profile__container-user {
@@ -1145,7 +1175,7 @@ body {
 		justify-content: normal;
 	}
 
-	.profile__container-content-text{
+	.profile__container-content-text {
 		text-indent: 0em;
 	}
 
