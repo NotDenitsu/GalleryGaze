@@ -74,7 +74,7 @@
                 <span class="navigation__tooltip"><?php if(isset($_SESSION['user'])){ echo "Log Out";} else { echo "Log In";}?></span>
             </li>
             <li class="navigation__item">
-                <a href="#" class="navigation__link"><i class="fas fa-info-circle"></i><span
+                <a href="information.php" class="navigation__link"><i class="fas fa-info-circle"></i><span
                         class="navigation__text">Info</span></a>
                 <span class="navigation__tooltip">Info</span>
             </li>

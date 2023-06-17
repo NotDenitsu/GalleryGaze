@@ -425,7 +425,7 @@ body {
 	min-width: 750px;
 	max-height: 400px;
 	border-radius: 10px;
-	background-color: #223843;
+	background-color: rgba(34, 56, 67, .6);
 }
 
 .upload__container-content {
@@ -446,7 +446,7 @@ body {
 	min-height: 300px;
 	max-width: 300px;
 	max-height: 300px;
-	background-color: #A29C9B;
+	background-color: #f5f5f5;
 	border-radius: 10px;
 	overflow: hidden;
 }
@@ -478,8 +478,7 @@ body {
 	max-width: 100%;
 	border: 1px solid #A29C9B;
 	border-radius: 10px;
-	background: none;
-	color: white;
+	background-color: #f5f5f5;
 }
 
 .upload__container-label {
@@ -493,8 +492,15 @@ body {
 	width: 100%;
 	border: none;
 	border-radius: 10px;
-	background-color: #a0fd14;
+	background-color: #D77A61;
 	color: white;
+	transition: all 0.3s;
+}
+
+.upload__button-post:hover {
+	cursor: pointer;
+	background-color: #bf674f;
+	transition: all 0.3s;
 }
 
 .upload__button-upload {
@@ -520,8 +526,7 @@ body {
 	min-height: 100px;
 	border: 1px solid #A29C9B;
 	border-radius: 10px;
-	background: none;
-	color: white;
+	background-color: #f5f5f5;
 	resize: none;
 }
 
@@ -541,7 +546,7 @@ body {
 .settings-container {
 	display: flex;
 	max-width: 900px;
-	max-height: 600px;	
+	max-height: 600px;
 	background-color: #223843;
 	border-radius: 15px;
 	overflow: hidden;
@@ -863,7 +868,7 @@ body {
 	margin-left: 50px;
 }
 
-.main-container__home{
+.main-container__home {
 	flex-direction: column;
 	justify-content: space-between;
 	gap: 50px;
@@ -963,7 +968,7 @@ body {
 		overflow-y: scroll;
 	}
 
-	.main-container__home{
+	.main-container__home {
 		align-items: normal;
 	}
 
