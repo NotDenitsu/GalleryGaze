@@ -1,36 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
-    <?php 
-        include "../backend/connection.php";
-        $postId;
-        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    <?php
+    include "../backend/connection.php";
+    if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
-            if(isset($_GET['id'])){
-                $postId = $_GET['id'];
-            }
+        if (isset($_GET['id'])) {
+            $postId = $_GET['id'];
         }
+    }
 
-        $query = "SELECT * FROM posts WHERE posts.id=?";
-        $postStatement = $connection->prepare($query);
-        $postStatement->execute([$postId]);
-        $postData = $postStatement->fetchAll()[0];
-        $postTitle = $postData["title"];
-        $postDescription = $postData["description"];
-        $postImageUrl = $postData["image_url"];
-        $userId = $postData["user_id"];
-        $postStatement->closeCursor();
+    $query = "SELECT * FROM posts WHERE posts.id=?";
+    $postStatement = $connection->prepare($query);
+    $postStatement->execute([$postId]);
+    $postData = $postStatement->fetchAll()[0];
+    $postTitle = $postData["title"];
+    $postDescription = $postData["description"];
+    $postImageUrl = $postData["image_url"];
+    $userId = $postData["user_id"];
+    $postStatement->closeCursor();
 
-        $query = "SELECT * FROM users WHERE id=?";
-        $userStatement = $connection->prepare($query);
-        $userStatement->execute([$userId]);
-        $userData = $userStatement->fetchAll()[0];
-        $userName = $userData["username"];
-        $userImageUrl = $userData["image_url"];
+    $query = "SELECT * FROM users WHERE id=?";
+    $userStatement = $connection->prepare($query);
+    $userStatement->execute([$userId]);
+    $userData = $userStatement->fetchAll()[0];
+    $userName = $userData["username"];
+    $userImageUrl = $userData["image_url"];
 
 
-     ?>
+    ?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
@@ -47,14 +47,12 @@
         /* Post Styling */
 
         .post {
-            max-width: 1200px;
-            max-height: 100vh;
+            align-self: flex-start;
 
-            margin: 0 auto;
+            width: 90%;
+
+            margin: 50px auto;
             padding: 10px;
-            
-            overflow:hidden;
-            overflow-y:scroll;
 
             border-radius: 10px;
             background-color: #223843;
@@ -201,7 +199,7 @@
             border-left: 3px solid rgba(162, 156, 155, .1);
         }
 
-        .post__miscellaneous-comments-container{
+        .post__miscellaneous-comments-container {
             padding-left: 20px;
         }
 
@@ -359,71 +357,84 @@
     </style>
 </head>
 
-<body class="main-container main-container--post">
+<body>
     <?php
     include "../templates/navigation.php";
     ?>
-
-     
-    <div class="post">
-        <div class="post__imagebox">
-            <img class="post__imagebox-image" src="../static/images/<?=$postImageUrl?>" alt="<?=$postTitle?>">
-        </div>
-        <div class="post__interactables">
-            <h1 class="post__interactables-title"><?=$postTitle?></h1>
-            <header class="post__interactables-header">
-                <div class="userbox">
-                    <img class="userbox__avatar" src="../static/assets/images/<?=$userImageUrl?>" alt="<?=$userName?>">
-                    <div class="userbox__stats">
-                        <a href="profile.php?id=<?=$userId?>" class="userbox__stats-username"><?=$userName?></a>
-                        <span class="userbox__stats-row"><i class="fa-solid fa-user"></i> 237</span>
-                        <span class="userbox__stats-row"><i class="fa-solid fa-upload"></i> 437</span>
-                    </div>
-                </div>
-                <div class="post__buttonbox">
-                    <div class="post__buttonbox-buttons">
-                        <button class="post__buttonbox-button"><i class="fa-regular fa-heart"></i></button>
-                        <button class="post__buttonbox-button"><i class="fa-solid fa-download"></i></button>
-                        <button class="post__buttonbox-button"><i class="fa-solid fa-share"></i></button>
-                        <button class="post__buttonbox-button"><i class="fa-solid fa-circle-exclamation"></i></button>
-                    </div>
-                    <button class="post__buttonbox-follow">Follow</button>
-                </div>
-            </header>
-
-        </div>
-        <div class="post__description">
-            <p><?=$postDescription?></p>
-        </div>
-
-        <div class="post__miscellaneous">
-            <div class="post__miscellaneous-recommended">
-                <h3 class="post__miscellaneous-title">You may also like</h3>
-                <div class="post__miscellaneous-recommended-posts">
-
-                </div>
+    <div class="main-container">
+        <div class="post">
+            <div class="post__imagebox">
+                <img class="post__imagebox-image" src="../static/images/<?= $postImageUrl ?>" alt="<?= $postTitle ?>">
             </div>
-            <div class="post__miscellaneous-comments">
-                <h3 class="post__miscellaneous-title">Comments</h3>
-
-                <form class="comment-field">
-                    <div class="comment-field__frame">
-                        <img class="comment-field__frame-avatar" src="" alt="">
+            <div class="post__interactables">
+                <h1 class="post__interactables-title">
+                    <?= $postTitle ?>
+                </h1>
+                <header class="post__interactables-header">
+                    <div class="userbox">
+                        <img class="userbox__avatar" src="../static/assets/images/<?= $userImageUrl ?>"
+                            alt="<?= $userName ?>">
+                        <div class="userbox__stats">
+                            <a href="profile.php?id=<?= $userId ?>" class="userbox__stats-username"><?= $userName ?></a>
+                            <span class="userbox__stats-row"><i class="fa-solid fa-user"></i> 237</span>
+                            <span class="userbox__stats-row"><i class="fa-solid fa-upload"></i> 437</span>
+                        </div>
                     </div>
-                    <div class="comment-field__content">
-                        <div class="comment-field__content-username">Begula</div>
-                        <textarea class="comment-field__content-field" name="comment" placeholder="Write a comment..." oninput="autoResize(this)"></textarea>
-                        <button class="comment-field__content-button" type="submit" name="post-comment">Post</button>
+                    <div class="post__buttonbox">
+                        <div class="post__buttonbox-buttons">
+                            <button class="post__buttonbox-button"><i class="fa-regular fa-heart"></i></button>
+                            <button class="post__buttonbox-button"><i class="fa-solid fa-download"></i></button>
+                            <button class="post__buttonbox-button"><i class="fa-solid fa-share"></i></button>
+                            <button class="post__buttonbox-button"><i
+                                    class="fa-solid fa-circle-exclamation"></i></button>
+                        </div>
+                        <button class="post__buttonbox-follow">Follow</button>
                     </div>
-                    
-                </form>
+                </header>
 
-                <div class="post__miscellaneous-comments-container">
-                    
+            </div>
+            <div class="post__description">
+                <p>
+                    <?= $postDescription ?>
+                </p>
+            </div>
+
+            <div class="post__miscellaneous">
+                <div class="post__miscellaneous-recommended">
+                    <h3 class="post__miscellaneous-title">You may also like</h3>
+                    <div class="post__miscellaneous-recommended-posts">
+
+                    </div>
+                </div>
+                <div class="post__miscellaneous-comments">
+                    <h3 class="post__miscellaneous-title">Comments</h3>
+                    <?php if (isset($_SESSION['user'])) { ?>
+
+                        <form class="comment-field">
+                            <div class="comment-field__frame">
+                                <img class="comment-field__frame-avatar" src="" alt="">
+                            </div>
+                            <div class="comment-field__content">
+                                <div class="comment-field__content-username">Begula</div>
+                                <textarea class="comment-field__content-field" name="comment"
+                                    placeholder="Write a comment..." oninput="autoResize(this)"></textarea>
+                                <button class="comment-field__content-button" type="submit"
+                                    name="post-comment">Post</button>
+                            </div>
+                        </form>
+                    <?php } else {
+                        echo "<span><strong>LOG IN TO COMMENT</strong></span>";
+                    } ?>
+
+                    <div class="post__miscellaneous-comments-container">
+
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+
 </body>
 
 </html>
