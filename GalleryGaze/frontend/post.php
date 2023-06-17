@@ -1,3 +1,7 @@
+
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -189,12 +193,15 @@
         .post__miscellaneous-recommended {
             width: 50%;
             height: 800px;
+            max-height: 800px;
             padding: 20px;
         }
 
         .post__miscellaneous-comments {
             width: 50%;
             height: 800px;
+            max-height: 800px;
+            overflow-y: scroll;
             padding: 20px;
             border-left: 3px solid rgba(162, 156, 155, .1);
         }
@@ -217,6 +224,9 @@
             display: flex;
             align-items: center;
             max-width: 500px;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+            border-bottom: 3px solid  rgba(162, 156, 155, .1);
         }
 
         .comment-field__frame {
@@ -310,6 +320,7 @@
         .comment__content-message {
             margin-top: 5px;
             background-color: #f2f2f2;
+            color: black;
             padding: 10px;
             border-radius: 5px;
             position: relative;
@@ -364,7 +375,7 @@
     <div class="main-container">
         <div class="post">
             <div class="post__imagebox">
-                <img class="post__imagebox-image" src="../static/images/<?= $postImageUrl ?>" alt="<?= $postTitle ?>">
+                <img class="post__imagebox-image" src="../static//assets/images/<?= $postImageUrl ?>" alt="<?= $postTitle ?>">
             </div>
             <div class="post__interactables">
                 <h1 class="post__interactables-title">
@@ -409,13 +420,16 @@
                 <div class="post__miscellaneous-comments">
                     <h3 class="post__miscellaneous-title">Comments</h3>
                     <?php if (isset($_SESSION['user'])) { ?>
+                    
 
-                        <form class="comment-field">
+                        <form class="comment-field" method="post" action="../backend/post_comment.php">
+                            
                             <div class="comment-field__frame">
                                 <img class="comment-field__frame-avatar" src="" alt="">
                             </div>
                             <div class="comment-field__content">
-                                <div class="comment-field__content-username">Begula</div>
+                                <div class="comment-field__content-username"><?=$_SESSION['user']['username']?></div>
+                                <input type="hidden" id="custId" name="post-id" value="<?=@$postId?>">
                                 <textarea class="comment-field__content-field" name="comment"
                                     placeholder="Write a comment..." oninput="autoResize(this)"></textarea>
                                 <button class="comment-field__content-button" type="submit"
@@ -423,11 +437,11 @@
                             </div>
                         </form>
                     <?php } else {
-                        echo "<span><strong>LOG IN TO COMMENT</strong></span>";
+                        echo "<div class='comment-field'><span><strong>LOG IN TO COMMENT</strong></span></div>";
                     } ?>
 
                     <div class="post__miscellaneous-comments-container">
-
+                        <?php include "../backend/loadcomments.php"?>
                     </div>
                 </div>
             </div>
