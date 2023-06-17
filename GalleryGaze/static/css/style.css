@@ -847,6 +847,9 @@ body {
 	gap: 80px;
 }
 
+.main-container--post{
+	flex:1 1 100%;
+}
 .main-container--profile {
 	justify-content: start;
 	gap: 0px;

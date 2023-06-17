@@ -20,12 +20,13 @@
             width: 320px;
             height: 320px;
             
-
             border-radius: 5px;
             border: 1px solid #CFCFCF;
 
             background-color: black;
             fill: white;
+
+            overflow:hidden;
 
             color: white;
             text-shadow: rgb(0, 0, 0) 1px 0 10px;
@@ -42,13 +43,13 @@
         }
 
         .postbox__image{
-            width: 100%;
-            height: 100%;
-            object-fit:cover;
-
             border-radius: 5px;
 
             transition: filter .3s, opacity .3s;
+        }
+
+        .postbox__image-img{
+            width:100%;
         }
         .postbox__image:hover{
             filter:blur(5px);
@@ -152,13 +153,14 @@
                 $uploadDate = $data["upload_date"];
                 $postImageUrl = $data["image_url"];
                 $userId = $data['user_id'];
+                $postId = $data['id'];
                 $picturesStatement->closeCursor();
 
                 $userStatement = $connection->prepare("SELECT * FROM users WHERE users.id=?");
                 $userStatement->execute([$userId]);
-                $userdata = $userStatement->fetchAll();
-                $userName = $userdata[0]["username"];
-                $userImageUrl = $userdata[0]["image_url"];
+                $userdata = $userStatement->fetchAll()[0];
+                $userName = $userdata["username"];
+                $userImageUrl = $userdata["image_url"];
                 $userStatement->closeCursor();
 
                 ?>

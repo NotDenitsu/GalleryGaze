@@ -1,6 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+    <?php 
+        include "../backend/connection.php";
+        $postId;
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+
+            if(isset($_GET['id'])){
+                $postId = $_GET['id'];
+            }
+        }
+
+        $query = "SELECT * FROM posts WHERE posts.id=?";
+        $postStatement = $connection->prepare($query);
+        $postStatement->execute([$postId]);
+        $postData = $postStatement->fetchAll()[0];
+        $postTitle = $postData["title"];
+        $postDescription = $postData["description"];
+        $postImageUrl = $postData["image_url"];
+        $userId = $postData["user_id"];
+        $postStatement->closeCursor();
+
+        $query = "SELECT * FROM users WHERE id=?";
+        $userStatement = $connection->prepare($query);
+        $userStatement->execute([$userId]);
+        $userData = $userStatement->fetchAll()[0];
+        $userName = $userData["username"];
+        $userImageUrl = $userData["image_url"];
+
+
+     ?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
@@ -17,9 +47,15 @@
         /* Post Styling */
 
         .post {
+            max-width: 1200px;
+            max-height: 100vh;
+
             margin: 0 auto;
             padding: 10px;
-            max-width: 1200px;
+            
+            overflow:hidden;
+            overflow-y:scroll;
+
             border-radius: 10px;
             background-color: #223843;
             color: white;
@@ -323,19 +359,23 @@
     </style>
 </head>
 
-<body>
-    <?php include "../templates/navigation.php";?>
+<body class="main-container main-container--post">
+    <?php
+    include "../templates/navigation.php";
+    ?>
+
+     
     <div class="post">
         <div class="post__imagebox">
-            <img class="post__imagebox-image" src="../static/assets/images/horse.jpg" alt="">
+            <img class="post__imagebox-image" src="../static/images/<?=$postImageUrl?>" alt="<?=$postTitle?>">
         </div>
         <div class="post__interactables">
-            <h1 class="post__interactables-title">Boring ahh image</h1>
+            <h1 class="post__interactables-title"><?=$postTitle?></h1>
             <header class="post__interactables-header">
                 <div class="userbox">
-                    <img class="userbox__avatar" src="cat.jpg" alt="">
+                    <img class="userbox__avatar" src="../static/assets/images/<?=$userImageUrl?>" alt="<?=$userName?>">
                     <div class="userbox__stats">
-                        <a href="profile.php" class="userbox__stats-username">Begula</a>
+                        <a href="profile.php?id=<?=$userId?>" class="userbox__stats-username"><?=$userName?></a>
                         <span class="userbox__stats-row"><i class="fa-solid fa-user"></i> 237</span>
                         <span class="userbox__stats-row"><i class="fa-solid fa-upload"></i> 437</span>
                     </div>
@@ -353,13 +393,7 @@
 
         </div>
         <div class="post__description">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis necessitatibus nobis quia consectetur
-                quos eius et. Iure, quis temporibus doloribus accusantium architecto, maiores, quas dolor quidem
-                repellat expedita sapiente quisquam? Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas
-                voluptatibus libero aliquid quas maxime, nobis placeat fuga pariatur quibusdam hic dolores nostrum
-                incidunt reprehenderit officia iste laudantium cum rerum quos. Lorem ipsum dolor sit amet consectetur
-                adipisicing elit. Distinctio cumque suscipit minima blanditiis aliquid facere voluptatibus perspiciatis
-                nesciunt non officiis id inventore, hic, provident laboriosam vero illo molestias quidem tenetur!</p>
+            <p><?=$postDescription?></p>
         </div>
 
         <div class="post__miscellaneous">
