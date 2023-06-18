@@ -67,6 +67,7 @@ session_start();
 <body>
     <?php
     include "../templates/navigation.php";
+    include "../backend/connection.php";
     ?>
     <div class="main-container">
         <div class="post">
@@ -113,7 +114,7 @@ session_start();
                             <button class="post__buttonbox-button"><i
                                     class="fa-solid fa-circle-exclamation post__icon"></i></button>
                         </div>
-                        <button class="post__buttonbox-follow">Follow</button>
+                        <button class="post__buttonbox-follow post__buttonbox-follow--unfollow">Follow</button>
                     </div>
                 </header>
 
@@ -128,7 +129,51 @@ session_start();
                 <div class="post__miscellaneous-recommended">
                     <h3 class="post__miscellaneous-title">You may also like</h3>
                     <div class="post__miscellaneous-recommended-posts">
+                        <?php
 
+                            // Assuming the current page is stored in the page variable
+                            $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
+                            $offset = 20;
+                            $limit = 20;
+                            $query = "SELECT COUNT(id) FROM posts";
+                            $picturesStatement = $connection->prepare($query);
+                            $picturesStatement->execute();
+                            $result = $picturesStatement->fetch()[0];
+                            $totalPages = ceil($result / $limit);
+
+                            // Calculate the offset based on the current page
+                            $calculated_offset = ($currentPage - 1) * $offset;
+
+                            // Load pictures with the offset and limit
+                            $query = "SELECT * FROM posts LIMIT :limit OFFSET :offset";
+                            $picturesStatement = $connection->prepare($query);
+                            $picturesStatement->bindValue(':limit', $limit, PDO::PARAM_INT);
+                            $picturesStatement->bindValue(':offset', $calculated_offset, PDO::PARAM_INT);
+                            $picturesStatement->execute();
+
+                            // Fetch and process the results
+                            foreach ($picturesStatement->fetchAll() as $data) {
+                                $postTitle = $data["title"];
+                                $uploadDate = $data["upload_date"];
+                                $postImageUrl = $data["image_url"];
+                                $userId = $data['user_id'];
+                                $postId = $data['id'];
+                                $picturesStatement->closeCursor();
+
+                                $userStatement = $connection->prepare("SELECT * FROM users WHERE users.id=?");
+                                $userStatement->execute([$userId]);
+                                $userdata = $userStatement->fetchAll()[0];
+                                $userName = $userdata["username"];
+                                $userImageUrl = $userdata["image_url"];
+                                $userStatement->closeCursor();
+
+                                ?>
+
+                                <?php
+                                include "../templates/postbox.php";
+                                ?>
+
+                            <?php } ?>
                     </div>
                 </div>
                 <div class="post__miscellaneous-comments">
