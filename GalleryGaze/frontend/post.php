@@ -15,22 +15,29 @@ session_start();
         }
     }
 
-    $query = "SELECT * FROM posts WHERE posts.id=?";
+    $query = "SELECT p.*, u.username, u.image_url AS user_image_url,
+    (SELECT COUNT(*) FROM comments c WHERE c.post_id = p.id) AS comment_count,
+    (SELECT COUNT(*) FROM likes l WHERE l.post_id = p.id) AS like_count,
+    (SELECT COUNT(*) FROM posts up WHERE up.user_id = u.id) AS user_uploads,
+    (SELECT COUNT(*) FROM followers f WHERE f.followed_id = u.id) AS user_followers
+    FROM posts p
+    INNER JOIN users u ON p.user_id = u.id
+    WHERE p.id = ?";
     $postStatement = $connection->prepare($query);
     $postStatement->execute([$postId]);
-    $postData = $postStatement->fetchAll()[0];
+    $postData = $postStatement->fetch(PDO::FETCH_ASSOC);
+    $postStatement->closeCursor();
+
     $postTitle = $postData["title"];
     $postDescription = $postData["description"];
     $postImageUrl = $postData["image_url"];
     $userId = $postData["user_id"];
-    $postStatement->closeCursor();
+    $userName = $postData["username"];
+    $userImageUrl = $postData["user_image_url"];
+    $userUploads = $postData["user_uploads"];
+    $userFollowers = $postData["user_followers"];
 
-    $query = "SELECT * FROM users WHERE id=?";
-    $userStatement = $connection->prepare($query);
-    $userStatement->execute([$userId]);
-    $userData = $userStatement->fetchAll()[0];
-    $userName = $userData["username"];
-    $userImageUrl = $userData["image_url"];
+
 
 
     ?>
@@ -77,23 +84,27 @@ session_start();
                             alt="<?= @$userName ?>">
                         <div class="userbox__stats">
                             <a href="profile.php?id=<?= $userId ?>" class="userbox__stats-username"><?= @$userName ?></a>
-                            <span class="userbox__stats-row"><i class="fa-solid fa-user"></i> 237</span>
-                            <span class="userbox__stats-row"><i class="fa-solid fa-upload"></i> 437</span>
+                            <span class="userbox__stats-row"><i class="fa-solid fa-user"></i>
+                                <?= @$userFollowers ?>
+                            </span>
+                            <span class="userbox__stats-row"><i class="fa-solid fa-upload"></i>
+                                <?= @$userUploads ?>    
+                            </span>
                         </div>
                     </div>
                     <div class="post__buttonbox">
                         <div class="post__buttonbox-buttons">
                             <form id="like-post" action="../backend/likepost.php" method="post">
-                                <?php include "../backend/check_liked.php";?>
+                                <?php include "../backend/check_liked.php"; ?>
                                 <input type="hidden" name="postId" value="<?= @$postId ?>">
                                 <button id="like-button" class="post__buttonbox-button" name="like" type="submit"><i
                                         class="<?php
-                                                     if(isset($_SESSION['user'])) {
-                                                        postIsLiked($_SESSION['user']['id'],$postId);
-                                                    } else {
-                                                         echo "fa-regular";
-                                                    } 
-                                                    ?> fa-heart post__icon"></i></button>
+                                        if (isset($_SESSION['user'])) {
+                                            postIsLiked($_SESSION['user']['id'], $postId);
+                                        } else {
+                                            echo "fa-regular";
+                                        }
+                                        ?> fa-heart post__icon"></i></button>
                             </form>
                             <button class="post__buttonbox-button"><i
                                     class="fa-solid fa-download post__icon"></i></button>
