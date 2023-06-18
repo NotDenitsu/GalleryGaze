@@ -15,11 +15,12 @@ $totalPages = ceil($result / $limit);
 $calculated_offset = ($currentPage - 1) * $offset;
 
 // Load pictures with the offset and limit
-$query = "SELECT p.*,
-(SELECT COUNT(*) FROM comments c WHERE c.post_id = p.id) AS comment_count,
-(SELECT COUNT(*) FROM likes l WHERE l.post_id = p.id) AS like_count
-FROM posts p
-LIMIT :limit OFFSET :offset;";
+$query = "SELECT p.*, u.username, u.image_url AS user_image_url,
+          (SELECT COUNT(*) FROM comments c WHERE c.post_id = p.id) AS comment_count,
+          (SELECT COUNT(*) FROM likes l WHERE l.post_id = p.id) AS like_count
+          FROM posts p
+          INNER JOIN users u ON p.user_id = u.id
+          LIMIT :limit OFFSET :offset";
 $picturesStatement = $connection->prepare($query);
 $picturesStatement->bindValue(':limit', $limit, PDO::PARAM_INT);
 $picturesStatement->bindValue(':offset', $calculated_offset, PDO::PARAM_INT);
@@ -34,16 +35,13 @@ foreach ($picturesStatement->fetchAll() as $data) {
     $postId = $data['id'];
     $commentCount = $data['comment_count'];
     $likeCount = $data['like_count'];
-    $picturesStatement->closeCursor();
 
-    $userStatement = $connection->prepare("SELECT * FROM users WHERE users.id=?");
-    $userStatement->execute([$userId]);
-    $userdata = $userStatement->fetchAll()[0];
-    $userName = $userdata["username"];
-    $userImageUrl = $userdata["image_url"];
-    $userStatement->closeCursor();
+    $userName = $data["username"];
+    $userImageUrl = $data["user_image_url"];
 
     include "../templates/postbox.php";
 }
+$picturesStatement->closeCursor();
+
 
 ?>
