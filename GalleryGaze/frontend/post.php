@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 ?>
@@ -43,6 +42,8 @@ session_start();
     <link rel="stylesheet" href="../static/assets/icons/fontawesome/css/all.min.css">
     <script src="../javascript/navigation.js"></script>
     <script src="../javascript/paperinput.js"></script>
+    <script src="../javascript/share.js"></script>
+    <script src="../javascript/like-button.js"></script>
     <style>
         * {
             box-sizing: border-box;
@@ -50,7 +51,7 @@ session_start();
 
         /* Post Styling */
 
-        
+
 
         /*End of Comment Styling*/
     </style>
@@ -63,7 +64,8 @@ session_start();
     <div class="main-container">
         <div class="post">
             <div class="post__imagebox">
-                <img class="post__imagebox-image" src="../static/assets/images/<?= $postImageUrl ?>" alt="<?= $postTitle ?>">
+                <img class="post__imagebox-image" src="../static/assets/images/<?= @$postImageUrl ?>"
+                    alt="<?= @$postTitle ?>">
             </div>
             <div class="post__interactables">
                 <h1 class="post__interactables-title">
@@ -71,20 +73,34 @@ session_start();
                 </h1>
                 <header class="post__interactables-header">
                     <div class="userbox">
-                        <img class="userbox__avatar" src="../static/assets/images/<?= $userImageUrl ?>"
-                            alt="<?= $userName ?>">
+                        <img class="userbox__avatar" src="../static/assets/images/<?= @$userImageUrl ?>"
+                            alt="<?= @$userName ?>">
                         <div class="userbox__stats">
-                            <a href="profile.php?id=<?= $userId ?>" class="userbox__stats-username"><?= $userName ?></a>
+                            <a href="profile.php?id=<?= $userId ?>" class="userbox__stats-username"><?= @$userName ?></a>
                             <span class="userbox__stats-row"><i class="fa-solid fa-user"></i> 237</span>
                             <span class="userbox__stats-row"><i class="fa-solid fa-upload"></i> 437</span>
                         </div>
                     </div>
                     <div class="post__buttonbox">
                         <div class="post__buttonbox-buttons">
-                            <button class="post__buttonbox-button"><i class="fa-regular fa-heart post__icon"></i></button>
-                            <button class="post__buttonbox-button"><i class="fa-solid fa-download post__icon"></i></button>
-                            <button class="post__buttonbox-button"><i class="fa-solid fa-share post__icon"></i></button>
-                            <button class="post__buttonbox-button"><i class="fa-solid fa-circle-exclamation post__icon"></i></button>
+                            <form id="like-post" action="../backend/likepost.php" method="post">
+                                <?php include "../backend/check_liked.php";?>
+                                <input type="hidden" name="postId" value="<?= @$postId ?>">
+                                <button id="like-button" class="post__buttonbox-button" name="like" type="submit"><i
+                                        class="<?php
+                                                     if(isset($_SESSION['user'])) {
+                                                        postIsLiked($_SESSION['user']['id'],$postId);
+                                                    } else {
+                                                         echo "fa-regular";
+                                                    } 
+                                                    ?> fa-heart post__icon"></i></button>
+                            </form>
+                            <button class="post__buttonbox-button"><i
+                                    class="fa-solid fa-download post__icon"></i></button>
+                            <button id="share-button" class="post__buttonbox-button"><i
+                                    class="fa-solid fa-share post__icon"></i></button>
+                            <button class="post__buttonbox-button"><i
+                                    class="fa-solid fa-circle-exclamation post__icon"></i></button>
                         </div>
                         <button class="post__buttonbox-follow">Follow</button>
                     </div>
@@ -107,16 +123,18 @@ session_start();
                 <div class="post__miscellaneous-comments">
                     <h3 class="post__miscellaneous-title">Comments</h3>
                     <?php if (isset($_SESSION['user'])) { ?>
-                    
+
 
                         <form class="comment-field" method="post" action="../backend/post_comment.php">
-                            
+
                             <div class="comment-field__frame">
                                 <img class="comment-field__frame-avatar" src="" alt="">
                             </div>
                             <div class="comment-field__content">
-                                <div class="comment-field__content-username"><?=$_SESSION['user']['username']?></div>
-                                <input type="hidden" id="custId" name="post-id" value="<?=@$postId?>">
+                                <div class="comment-field__content-username">
+                                    <?= $_SESSION['user']['username'] ?>
+                                </div>
+                                <input type="hidden" id="custId" name="post-id" value="<?= @$postId ?>">
                                 <textarea class="comment-field__content-field" name="comment"
                                     placeholder="Write a comment..." oninput="autoResize(this)"></textarea>
                                 <button class="comment-field__content-button" type="submit"
@@ -124,18 +142,22 @@ session_start();
                             </div>
                         </form>
                     <?php } else {
-                        echo "<span><strong>Log in to comment</strong></span>";
+                        echo "<div class='comment-field'><span><strong>LOG IN TO COMMENT</strong></span></div>";
                     } ?>
 
                     <div class="post__miscellaneous-comments-container">
-                        <?php include "../backend/loadcomments.php"?>
+                        <?php include "../backend/loadcomments.php" ?>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-
+    <!-- Alert window -->
+    <div class="alert-window" id="alert-window">
+        <span class="alert-window__text"></span>
+        <span class="alert-window__close-button">&times;</span>
+    </div>
 </body>
 
 </html>

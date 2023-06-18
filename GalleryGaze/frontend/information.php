@@ -1,3 +1,7 @@
+<?php
+session_start(); 
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -105,7 +109,7 @@
             <h2 class="information__title">Team Members</h2>
             <div class="information__team">
                 <div class="information__team-card">
-                    <img class="information__team-card-image" src="../static/images/denis.png" alt="Denis">
+                    <img class="information__team-card-image" src="../static/assets/images/denis.png" alt="Denis">
                     <h3 class="information__team-card-name">Denis Bodurov</h3>
                     <div class="information__team-card-roles">
                         <p class="information__team-card-role">Fullstack Developer</p>
@@ -116,7 +120,7 @@
                     </div>
                 </div>
                 <div class="information__team-card">
-                    <img class="information__team-card-image" src="../static/images/alexander.jpg" alt="Alexander">
+                    <img class="information__team-card-image" src="../static/assets//images/alexander.jpg" alt="Alexander">
                     <h3 class="information__team-card-name">Alexander Belchev</h3>
                     <div class="information__team-card-roles">
                         <p class="information__team-card-role">Fullstack Developer</p>
@@ -126,14 +130,14 @@
                     </div>
                 </div>
                 <div class="information__team-card">
-                    <img class="information__team-card-image" src="../static/images/mihail.jpg" alt="Mihail">
+                    <img class="information__team-card-image" src="../static/assets/images/mihail.jpg" alt="Mihail">
                     <h3 class="information__team-card-name">Mihail Belchev</h3>
                     <div class="information__team-card-roles">
                         <p class="information__team-card-role">Frontend Developer</p>
                     </div>
                 </div>
                 <div class="information__team-card">
-                    <img class="information__team-card-image" src="../static/images/martin.png" alt="Martin">
+                    <img class="information__team-card-image" src="../static/assets/images/martin.png" alt="Martin">
                     <h3 class="information__team-card-name">Martin Asenov</h3>
                     <div class="information__team-card-roles">
                         <p class="information__team-card-role">Frontend Developer</p>

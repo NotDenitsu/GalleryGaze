@@ -2,7 +2,7 @@
 $servername = "localhost";
 $database = "gallerygaze";
 $name = "root";
-$password = "";
+$password = "Denis123";
 
 try {
   $connection = new PDO("mysql:host=$servername;dbname=$database", $name, $password);

@@ -15,7 +15,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
         foreach ($comment as $item) {
             $content = $item['content'];
-            $creationDate = $item['creation_date'];
+            $date = new DateTime($item['creation_date']);
+            $creationDate = $date->format("M d, Y");
             $userImageUrl = $item['image_url'];
             $username = $item['username'];
 

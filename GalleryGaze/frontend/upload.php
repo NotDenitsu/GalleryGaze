@@ -16,8 +16,9 @@
     <link rel="stylesheet" href="../static/css/normalize.css">
     <link rel="stylesheet" href="../static/css/style.css">
     <link rel="stylesheet" href="../static/assets/icons/fontawesome/css/all.min.css">
-    <script src="../javascript/upload.js"></script>
+    <script src="../javascript/upload-dropdown.js"></script>
     <script src="../javascript/navigation.js"></script>
+    <script src="../javascript/upload-alert.js"></script>
 </head>
 
 <body>
@@ -26,7 +27,7 @@
         <form class="upload__container-main"  action="../backend/upload_post.php" method="post" enctype="multipart/form-data">
             <div class="upload__container-content">
                 <div class="upload__container-image">
-                    <button id="upload-button" class="upload__button-upload" type="button"><i class="fa-solid fa-upload"></i></button>
+                    <button id="upload-button" class="upload__button-upload" type="button"><i class="fa-solid fa-upload upload__icon"></i></button>
                 </div>
                 <input class="upload__file" type="file" name="imageToUpload" id="upload-file">
             </div>
@@ -40,6 +41,12 @@
                 <button id="upload-button" class="upload__button-post" type="submit" name="upload">Post</button>
             </div>
         </form>
+    </div>
+
+    <!--Alert Window-->
+    <div class="alert-window" id="alert-window">
+        <span class="alert-window__text"></span>
+        <span class="alert-window__close-button">&times;</span>
     </div>
 </body>
 

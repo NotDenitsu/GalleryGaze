@@ -39,6 +39,8 @@ include "../backend/utilities.php";
                     </div>
                 </div>
                 <button type="submit" name="login" class="authentication__button-submit">Sign In</button>
+                <span class="authentication__text">OR</span>
+                <a href="home.php" class="authentication__button-submit authentication__button-guest">Continue as Guest</a>
             </form>
 
             <label>Don't have an account? <a class="authentication__link" href="register.php">Sign Up</a></label>
