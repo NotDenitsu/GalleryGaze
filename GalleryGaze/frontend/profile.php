@@ -190,9 +190,10 @@ include "../backend/connection.php";
                 <div class="profile__container-content-posts">
                     <?php
                     //Load all pictures available
-                    $query = "SELECT * FROM posts";
+
+                    $query = "SELECT * FROM posts WHERE user_id=?";
                     $picturesStatement = $connection->prepare($query);
-                    $picturesStatement->execute();
+                    $picturesStatement->execute([$id]);
                     //$connection->query($query)
                     foreach ($picturesStatement->fetchAll() as $data) {
                         $postTitle = $data["title"];
