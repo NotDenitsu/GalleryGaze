@@ -901,6 +901,7 @@ body {
 	align-items: center;
 	overflow-y: scroll;
 	margin-left: 50px;
+	padding-top:20px;
 }
 
 .main-container__home {
@@ -1043,9 +1044,19 @@ body {
 	transition: all 0.3s;
 }
 
+.post__buttonbox-follow--unfollow{
+	background-color: #635c5a !important;
+}
+
 .post__buttonbox-follow:hover {
 	cursor: pointer;
 	background-color: #bf674f;
+	transition: all 0.3s;
+}
+
+.post__buttonbox-follow--unfollow:hover{
+	cursor: pointer;
+	background-color: #4b4543 !important;
 	transition: all 0.3s;
 }
 
@@ -1074,6 +1085,22 @@ body {
 	width: 50%;
 	height: 800px;
 	padding: 20px;
+
+	overflow:hidden;
+	overflow-y:scroll;
+}
+
+.post__miscellaneous-recommended-posts{
+	width:100%;
+	height:100%;
+
+	display: grid;
+	grid-template-columns: repeat(auto-fit, 320px);
+	grid-auto-rows: 320px;
+	gap: 10px;
+
+	justify-content:center;
+
 }
 
 .post__miscellaneous-comments {
@@ -1226,6 +1253,7 @@ body {
 	grid-auto-rows: 320px;
 	row-gap: 6px;
 	gap: 6px;
+	margin-top: 20px;
 	justify-content: center;
 
 }
@@ -1525,6 +1553,7 @@ body {
 		left: 0;
 		top: 100%;
 		background-color: #223843;
+		overflow:hidden;
 		animation: extend-navigation 0.3s forwards;
 	}
 
