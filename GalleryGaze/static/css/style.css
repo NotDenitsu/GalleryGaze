@@ -1164,6 +1164,13 @@ body {
 	padding-left: 20px;
 }
 
+.post__miscellaneous-header{
+	display: flex;
+	flex-direction: row;
+	justify-content: left;
+	gap: 10px;
+}
+
 .post__miscellaneous-title {
 	margin: 0;
 	margin-bottom: 30px;
