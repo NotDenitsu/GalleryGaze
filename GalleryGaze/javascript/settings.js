@@ -2,8 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const accountPill = document.getElementById('settings-account');
     const securityPill = document.getElementById('settings-security');
   
-    const accountSettings = document.querySelector('.settings__account-options');
-    const securitySettings = document.querySelector('.settings__security-options');
+    const accountSettings = document.querySelector('.settings-container__options-account');
+    const securitySettings = document.querySelector('.settings-container__options-security');
   
     accountPill.addEventListener('click', () => {
       console.log("clicked");
