@@ -27,10 +27,9 @@ if (!isset($_SESSION['user'])) {
 
 </head>
 
-<body>
+<body class="main-container main-container-settings">
     <?php include "../templates/navigation.php" ?>
-    <div class="main-container">
-        <div class="settings-container">
+    <div class="settings-container">
             <div class="settings-container__nav">
                 <div class="settings-container__nav-profile">
                     <div class="settings__avatar-frame">
@@ -43,64 +42,56 @@ if (!isset($_SESSION['user'])) {
                 </div>
                 <div class="settings__container-pills">
                     <div id="settings-account" class="settings__pill"><i class="fa fa-solid fa-user"> </i>Account</div>
-                    <div id="settings-security" class="settings__pill"><i class="fa fa-solid fa-lock"> </i>Security
-                    </div>
+                    <div id="settings-security" class="settings__pill"><i class="fa fa-solid fa-lock"> </i>Security</div>
                 </div>
             </div>
-            <div class="settings__container-options">
-                <div class="settings__account-options">
-                    <h1 class="settings__title"> Account </h1>
-                    <section class="settings__options-section">
-                        <h3 class="settings__section-title">Personal Information</h3>
-                        <form class="settings__container-fields" action="../backend/update_settings.php" method="post">
-                            <div class="settings__container-label">
-                                <label for="username-edit">Username</label>
-                                <input id="username-edit" class="settings__field" name="username"
-                                    value="<?= @$username ?>">
+            <div class="settings-container__options">
+                <div class="settings-container__options-account">
+                    <h1 class="settings-title"> Account </h1>
+                    <section class="settings-section">
+                        <h3 class="settings-section__title">Personal Information</h3>
+                        <form class="settings-section__form" action="../backend/update_settings.php" method="post">
+                            <div class="settings-section__form-container">
+                                <label class="settings-section__form-container-label" for="username-edit">Username</label>
+                                <input id="username-edit" class="settings-section__form-container-input" name="username" value="<?= @$username ?>">
                             </div>
-                            <div class="settings__container-label">
-                                <label for="email-edit">E-mail</label>
-                                <input id="email-edit" class="settings__field" name="username" value="<?= @$email ?>">
+                            <div class="settings-section__form-container">
+                                <label class="settings-section__form-container-label" for="email-edit">E-mail</label>
+                                <input id="email-edit" class="settings-section__form-container-input" name="username" value="<?= @$email ?>">
                             </div>
-                            <div class="settings__container-label">
-                                <label for="biography-edit">Biography</label>
-                                <textarea id="biography-edit" class="settings__field-bio"
-                                    name="biography"><?= @$biography ?></textarea>
+                            <div class="settings-section__form-container">
+                                <label class="settings-section__form-container-label" for="biography-edit">Biography</label>
+                                <textarea id="biography-edit" class="settings-section__form-container-textarea" name="biography"><?= @$biography ?></textarea>
                             </div>
-                            <button class="settings__button-save">Save</button>
+                            <button class="settings-section__form-button">Save</button>
                         </form>
 
                     </section>
                 </div>
-                <div class="settings__security-options">
-                    <h1 class="settings__title">Security</h1>
-                    <section class="settings__options-section">
-                        <h3 class="settings__section-title"></h3>
-                        <h3 class="settings__section-title">Change Password</h3>
-                        <div class="settings__container-fields">
-                            <div class="settings__container-label">
-                                <label for="current-password-edit">Current Password</label>
-                                <input id="current-password-edit" class="settings__field" type="password"
-                                    name="current-password">
+                <div class="settings-container__options-security">
+                    <h1 class="settings-title">Security</h1>
+                    <section class="settings-section settings-section--options">
+                        <h3 class="settings-section__title">Change Password</h3>
+                        <form class="settings-section__form" action="../backend/update_settings.php" method="post">
+                            <div class="settings-section__form-container">
+                                <label class="settings-section__form-container-label" for="current-password-edit">Current Password</label>
+                                <input id="current-password-edit" class="settings-section__form-container-input" type="password" name="current-password">
                             </div>
-                            <div class="settings__container-label">
-                                <label for="new-password-edit">New Password</label>
-                                <input id="new-password-edit" class="settings__field" type="password"
-                                    name="new-password">
+                            <div class="settings-section__form-container">
+                                <label class="settings-section__form-container-label" for="new-password-edit">New Password</label>
+                                <input id="new-password-edit" class="settings-section__form-container-input" type="password" name="new-password">
                             </div>
 
-                            <div class="settings__container-label">
-                                <label for="repeat-new-password-edit">Repeat New Password</label>
-                                <input id="repeat-new-password-edit" class="settings__field" type="password"
-                                    name="repeat-new-password">
+                            <div class="settings-section__form-container">
+                                <label class="settings-section__form-container-label" for="repeat-new-password-edit">Repeat New Password</label>
+                                <input id="repeat-new-password-edit" class="settings-section__form-container-input" type="password" name="repeat-new-password">
                             </div>
-                            <button class="settings__button-save">Save</button>
-                        </div>
+                            <button class="settings-section__form-button">Save</button>
+                        </form>
                 </div>
                 </section>
             </div>
         </div>
-    </div>
 
 </body>
 
