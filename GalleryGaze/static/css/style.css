@@ -1627,7 +1627,7 @@ body {
 	}
 
 	.settings-section__form {
-		justify-content: left;
+		margin-inline:auto;
 		max-width: 400px;
 		min-width: 300px;
 	}

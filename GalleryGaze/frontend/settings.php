@@ -72,7 +72,7 @@ if (!isset($_SESSION['user'])) {
                     <h1 class="settings-title">Security</h1>
                     <section class="settings-section settings-section--options">
                         <h3 class="settings-section__title">Change Password</h3>
-                        <form class="settings-section__form-container" action="../backend/update_settings.php" method="post">
+                        <form class="settings-section__form" action="../backend/update_settings.php" method="post">
                             <div class="settings-section__form-container">
                                 <label class="settings-section__form-container-label" for="current-password-edit">Current Password</label>
                                 <input id="current-password-edit" class="settings-section__form-container-input" type="password" name="current-password">
