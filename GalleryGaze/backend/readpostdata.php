@@ -3,7 +3,7 @@
     if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
         if (isset($_GET['id'])) {
-            $postId = $_GET['id'];
+            $thisPostId = $_GET['id'];
         }
     }
 
@@ -16,19 +16,19 @@
     INNER JOIN users u ON p.user_id = u.id
     WHERE p.id = ?";
     $postStatement = $connection->prepare($query);
-    $postStatement->execute([$postId]);
+    $postStatement->execute([$thisPostId]);
     $postData = $postStatement->fetch(PDO::FETCH_ASSOC);
     $postStatement->closeCursor();
 
-    $postTitle = $postData["title"];
-    $postDescription = $postData["description"];
-    $postImageUrl = $postData["image_url"];
-    $commentCount = $postData["comment_count"];
-    $userId = $postData["user_id"];
-    $userName = $postData["username"];
-    $userImageUrl = $postData["user_image_url"];
-    $userUploads = $postData["user_uploads"];
-    $userFollowers = $postData["user_followers"];
+    $thisPostTitle = $postData["title"];
+    $thisPostDescription = $postData["description"];
+    $thisPostImageUrl = $postData["image_url"];
+    $thisCommentCount = $postData["comment_count"];
+    $thisUserId = $postData["user_id"];
+    $thisUsername = $postData["username"];
+    $thisUserImageUrl = $postData["user_image_url"];
+    $thisUserUploads = $postData["user_uploads"];
+    $thisUserFollowers = $postData["user_followers"];
 
 
 

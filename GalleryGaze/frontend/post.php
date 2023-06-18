@@ -5,7 +5,7 @@ session_start();
 <html lang="en">
 
 <head>
-    <?php include "../backend/readpostdata.php"?>
+    <?php include "../backend/readpostdata.php" ?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
@@ -37,24 +37,24 @@ session_start();
     <div class="main-container">
         <div class="post">
             <div class="post__imagebox">
-                <img class="post__imagebox-image" src="../static/assets/images/<?= @$postImageUrl ?>"
-                    alt="<?= @$postTitle ?>">
+                <img class="post__imagebox-image" src="../static/assets/images/<?= @$thisPostImageUrl ?>"
+                    alt="<?= @$thisPostTitle ?>">
             </div>
             <div class="post__interactables">
                 <h1 class="post__interactables-title">
-                    <?= $postTitle ?>
+                    <?= $thisPostTitle ?>
                 </h1>
                 <header class="post__interactables-header">
                     <div class="userbox">
-                        <img class="userbox__avatar" src="../static/assets/images/<?= @$userImageUrl ?>"
-                            alt="<?= @$userName ?>">
+                        <img class="userbox__avatar" src="../static/assets/images/<?= @$thisUserImageUrl ?>"
+                            alt="<?= @$thisUsername ?>">
                         <div class="userbox__stats">
-                            <a href="profile.php?id=<?= $userId ?>" class="userbox__stats-username"><?= @$userName ?></a>
+                            <a href="profile.php?id=<?= $userId ?>" class="userbox__stats-username"><?= @$thisUsername ?></a>
                             <span class="userbox__stats-row"><i class="fa-solid fa-user"></i>
-                                <?= @$userFollowers ?>
+                                <?= @$thisUserFollowers ?>
                             </span>
                             <span class="userbox__stats-row"><i class="fa-solid fa-upload"></i>
-                                <?= @$userUploads ?>    
+                                <?= @$thisUserUploads ?>
                             </span>
                         </div>
                     </div>
@@ -62,11 +62,11 @@ session_start();
                         <div class="post__buttonbox-buttons">
                             <form id="like-post" action="../backend/likepost.php" method="post">
                                 <?php include "../backend/check_liked.php"; ?>
-                                <input type="hidden" name="postId" value="<?= @$postId ?>">
+                                <input type="hidden" name="postId" value="<?= @$thisPostId ?>">
                                 <button id="like-button" class="post__buttonbox-button" name="like" type="submit"><i
                                         class="<?php
                                         if (isset($_SESSION['user'])) {
-                                            postIsLiked($_SESSION['user']['id'], $postId);
+                                            postIsLiked($_SESSION['user']['id'], $thisPostId);
                                         } else {
                                             echo "fa-regular";
                                         }
@@ -86,68 +86,30 @@ session_start();
             </div>
             <div class="post__description-container">
                 <p class="post__description">
-                    <?= $postDescription ?>
+                    <?= $thisPostDescription ?>
                 </p>
             </div>
 
             <div class="post__miscellaneous">
                 <div class="post__miscellaneous-recommended">
+
                     <h3 class="post__miscellaneous-title">You may also like</h3>
                     <div class="post__miscellaneous-recommended-posts">
-                        <?php
-
-                            // Assuming the current page is stored in the page variable
-                            $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
-                            $offset = 20;
-                            $limit = 20;
-                            $query = "SELECT COUNT(id) FROM posts";
-                            $picturesStatement = $connection->prepare($query);
-                            $picturesStatement->execute();
-                            $result = $picturesStatement->fetch()[0];
-                            $totalPages = ceil($result / $limit);
-
-                            // Calculate the offset based on the current page
-                            $calculated_offset = ($currentPage - 1) * $offset;
-
-                            // Load pictures with the offset and limit
-                            $query = "SELECT * FROM posts LIMIT :limit OFFSET :offset";
-                            $picturesStatement = $connection->prepare($query);
-                            $picturesStatement->bindValue(':limit', $limit, PDO::PARAM_INT);
-                            $picturesStatement->bindValue(':offset', $calculated_offset, PDO::PARAM_INT);
-                            $picturesStatement->execute();
-
-                            // Fetch and process the results
-                            foreach ($picturesStatement->fetchAll() as $data) {
-                                $postTitle = $data["title"];
-                                $uploadDate = $data["upload_date"];
-                                $postImageUrl = $data["image_url"];
-                                $userId = $data['user_id'];
-                                $postId = $data['id'];
-                                $picturesStatement->closeCursor();
-
-                                $userStatement = $connection->prepare("SELECT * FROM users WHERE users.id=?");
-                                $userStatement->execute([$userId]);
-                                $userdata = $userStatement->fetchAll()[0];
-                                $userName = $userdata["username"];
-                                $userImageUrl = $userdata["image_url"];
-                                $userStatement->closeCursor();
-
-                                ?>
-
-                                <?php
-                                include "../templates/postbox.php";
-                                ?>
-
-                            <?php } ?>
+                        <?php include "../backend/loadrecommended.php"; ?>
+                    </div>
+                    <div class="pagination">
+                        <?php include "../backend/pagination.php"; ?>
                     </div>
                 </div>
                 <div class="post__miscellaneous-comments">
                     <div class="post__miscellaneous-header">
-                    <h3 class="post__miscellaneous-title">Comments</h3>
-                    <i class="fa-regular fa-comment post__miscellaneous-title"></i>
-                    <span class="post__miscellaneous-title"><?= @$commentCount?></span>
+                        <h3 class="post__miscellaneous-title">Comments</h3>
+                        <i class="fa-regular fa-comment post__miscellaneous-title"></i>
+                        <span class="post__miscellaneous-title">
+                            <?= @$thisCommentCount ?>
+                        </span>
                     </div>
-                    
+
                     <?php if (isset($_SESSION['user'])) { ?>
 
 
@@ -160,7 +122,7 @@ session_start();
                                 <div class="comment-field__content-username">
                                     <?= $_SESSION['user']['username'] ?>
                                 </div>
-                                <input type="hidden" id="custId" name="post-id" value="<?= @$postId ?>">
+                                <input type="hidden" name="post-id" value="<?= @$thisPostId ?>">
                                 <textarea class="comment-field__content-field" name="comment"
                                     placeholder="Write a comment..." oninput="autoResize(this)"></textarea>
                                 <button class="comment-field__content-button" type="submit"
