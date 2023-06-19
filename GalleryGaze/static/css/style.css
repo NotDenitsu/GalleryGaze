@@ -1157,6 +1157,10 @@ body {
 }
 
 .post__miscellaneous-recommended {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 50px;
 	width: 50%;
 	height: 800px;
 	padding: 20px;
@@ -1167,7 +1171,6 @@ body {
 
 .post__miscellaneous-recommended-posts{
 	width:100%;
-	height:100%;
 
 	display: grid;
 	grid-template-columns: repeat(auto-fit, 320px);
@@ -1189,6 +1192,13 @@ body {
 
 .post__miscellaneous-comments-container {
 	padding-left: 20px;
+}
+
+.post__miscellaneous-header{
+	display: flex;
+	flex-direction: row;
+	justify-content: left;
+	gap: 10px;
 }
 
 .post__miscellaneous-title {
@@ -1492,8 +1502,9 @@ body {
 /*Pages*/
 
 .pagination {
-	text-align: center;
+	align-self: center;
 	margin-bottom: 50px;
+	z-index: 9999;
 }
 
 .pagination__link {
@@ -1604,6 +1615,7 @@ body {
 	}
 
 	.main-container__posts {
+		max-height: none;
 		width: 100%;
 		justify-content: center;
 		padding: 0px;
