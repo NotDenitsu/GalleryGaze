@@ -12,10 +12,10 @@ session_start();
     <link rel="stylesheet" href="../static/css/normalize.css">
     <link rel="stylesheet" href="../static/css/style.css">
     <link rel="stylesheet" href="../static/assets/icons/fontawesome/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="../javascript/navigation.js"></script>
     <script src="../javascript/paperinput.js"></script>
     <script src="../javascript/share.js"></script>
-    <script src="../javascript/like-button.js"></script>
     <style>
         * {
             box-sizing: border-box;
@@ -61,17 +61,18 @@ session_start();
                     <div class="post__buttonbox">
                         <div class="post__buttonbox-buttons">
                             <form id="like-post" action="../backend/likepost.php" method="post">
-                                <?php include "../backend/check_liked.php"; ?>
                                 <input type="hidden" name="postId" value="<?= @$thisPostId ?>">
-                                <button id="like-button" class="post__buttonbox-button" name="like" type="submit"><i
-                                        class="<?php
-                                        if (isset($_SESSION['user'])) {
-                                            postIsLiked($_SESSION['user']['id'], $thisPostId);
-                                        } else {
-                                            echo "fa-regular";
-                                        }
-                                        ?> fa-heart post__icon"></i></button>
+                                <button id="like-button" class="post__buttonbox-button" name="like" type="submit"
+                                    value="liked"><i class="<?php
+                                    if (isset($_SESSION['user'])) {
+                                        include "../backend/check_liked.php";
+                                        postIsLiked($_SESSION['user']['id'], $thisPostId);
+                                    } else {
+                                        echo "fa-regular";
+                                    }
+                                    ?> fa-heart post__icon"></i></button>
                             </form>
+                            <script src="../javascript/likepost.js"></script>
                             <button class="post__buttonbox-button"><i
                                     class="fa-solid fa-download post__icon"></i></button>
                             <button id="share-button" class="post__buttonbox-button"><i
@@ -79,7 +80,23 @@ session_start();
                             <button class="post__buttonbox-button"><i
                                     class="fa-solid fa-circle-exclamation post__icon"></i></button>
                         </div>
-                        <button class="post__buttonbox-follow post__buttonbox-follow--unfollow">Follow</button>
+                        <form id="follow-user" action="../backend/userfollow.php" method="post">
+                            <input type="hidden" name="followedUserID" value="<?= @$thisUserId ?>">
+                            <?php if (isset($_SESSION['user'])) {
+                                include "../backend/check_follow.php";
+                                if (userIsFollowed($_SESSION['user']['id'], $thisUserId)) { ?>
+                                    <button id="follow-button" class="post__buttonbox-follow post__buttonbox-follow--unfollow"
+                                        type="submit" name="follow" value="followed">Unfollow</button>
+                                <?php } else { ?>
+                                    <button id="follow-button" class="post__buttonbox-follow" type="submit" name="follow"
+                                        value="followed">Follow</button>
+                                <?php } ?>
+                            <?php } else { ?>
+                                <button id="follow-button" class="post__buttonbox-follow post__buttonbox-follow--unfollow"
+                                    type="submit" name="follow" value="followed">LOG IN TO FOLLOW</button>
+                            <?php } ?>
+                        </form>
+                        <script src="../javascript/userfollow.js"></script>
                     </div>
                 </header>
 
@@ -113,7 +130,7 @@ session_start();
                     <?php if (isset($_SESSION['user'])) { ?>
 
 
-                        <form class="comment-field" method="post" action="../backend/post_comment.php">
+                        <form id="comment-post" class="comment-field" method="post" action="../backend/post_comment.php">
 
                             <div class="comment-field__frame">
                                 <img class="comment-field__frame-avatar" src="" alt="">
@@ -125,10 +142,11 @@ session_start();
                                 <input type="hidden" name="post-id" value="<?= @$thisPostId ?>">
                                 <textarea class="comment-field__content-field" name="comment"
                                     placeholder="Write a comment..." oninput="autoResize(this)"></textarea>
-                                <button class="comment-field__content-button" type="submit"
+                                <button id="comment-post-button" class="comment-field__content-button" type="submit"
                                     name="post-comment">Post</button>
                             </div>
                         </form>
+
                     <?php } else {
                         echo "<div class='comment-field'><span><strong>LOG IN TO COMMENT</strong></span></div>";
                     } ?>
@@ -136,6 +154,7 @@ session_start();
                     <div class="post__miscellaneous-comments-container">
                         <?php include "../backend/loadcomments.php" ?>
                     </div>
+                    <script src="../javascript/commentpost.js"></script>
                 </div>
             </div>
         </div>

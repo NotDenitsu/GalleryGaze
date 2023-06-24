@@ -9,7 +9,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         $stmt = $connection->prepare("SELECT c.content, c.creation_date, u.image_url, u.username
                                         FROM comments c
                                         JOIN users u ON c.user_id = u.id
-                                        WHERE c.post_id = ?");
+                                        WHERE c.post_id = ?
+                                        ORDER BY c.creation_date DESC");
         $stmt->execute([$postID]);
         $comment = $stmt->fetchAll();
 

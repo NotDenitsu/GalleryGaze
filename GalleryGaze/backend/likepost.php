@@ -2,37 +2,40 @@
 session_start();
 include "connection.php";
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') { //If file is executed without POST data return to home page
-    if (isset($_SESSION['user'])) { //Checking if the user is logged in. If not return to login page
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_SESSION['user'])) {
         $userID = $_SESSION['user']['id'];
 
-        if (isset($_POST["like"])) {
-            $postID = $_POST['postId'];
-            $sql = "SELECT * FROM likes WHERE user_id = ? and post_id = ?";
+        if (isset($_POST['like'])) {
+            // Validate and sanitize the post ID
+            $postID = filter_var($_POST['postId'], FILTER_VALIDATE_INT);
+
+            if ($postID === false) {
+                // Invalid post ID, handle the error accordingly
+                echo "invalid_argument";
+                exit();
+            }
+
+            $sql = "SELECT * FROM likes WHERE user_id = ? AND post_id = ?";
             $stmt = $connection->prepare($sql);
             $stmt->execute([$userID, $postID]);
             $isLiked = $stmt->fetchAll();
 
             if ($isLiked) {
-                $sql = "DELETE FROM likes WHERE user_id = ? and post_id = ?"; //If it's liked, unlike it
+                $sql = "DELETE FROM likes WHERE user_id = ? AND post_id = ?";
             } else {
-                $sql = "INSERT INTO likes (`user_id`,`post_id`) VALUES (?, ?)"; //If it's not liked, like it
+                $sql = "INSERT INTO likes (`user_id`, `post_id`) VALUES (?, ?)";
             }
 
             $stmt = $connection->prepare($sql);
             $stmt->execute([$userID, $postID]);
-
-            header("location: ../frontend/post.php?id=$postID"); // Go back to the post page
-            exit();
-
         }
     } else {
-        header("location: ../frontend/login.php");
+        echo "not_logged_in";
         exit();
     }
-
 } else {
-    header("location: ../frontend/home.php");
+    echo "invalid_argument";
     exit();
 }
 

@@ -7,13 +7,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['upload'])) {
         if (count($_FILES) === 1) {
             $uploadedFile = @$_FILES['imageToUpload'];
-            $filename = @$uploadedFile['name'];
+            $filename = $uploadedFile['name'];
             $tmpFilePath = @$uploadedFile['tmp_name'];
             $fileExtension = pathinfo($filename, PATHINFO_EXTENSION);
             $allowedExtensions = ['jpg', 'jpeg', 'png'];
 
-            echo $filename;
-            echo $fileExtension;
 
             // Check if the file extension is allowed
             if (!in_array(strtolower($fileExtension), $allowedExtensions)) {
@@ -21,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 exit;
             }
 
-            echo "here";
+
             // Generate a unique identifier for the file
             $uniqueId = md5(uniqid());
 

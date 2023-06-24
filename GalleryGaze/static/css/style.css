@@ -1086,6 +1086,10 @@ body {
 	width: 180px;
 }
 
+.post__icon--liked{
+	color: #DB324D;
+}
+
 .post__buttonbox-buttons {
 	width: 100%;
 	display: flex;
@@ -1159,8 +1163,7 @@ body {
 .post__miscellaneous-recommended {
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
-	gap: 50px;
+	gap: 30px;
 	width: 50%;
 	height: 800px;
 	padding: 20px;
