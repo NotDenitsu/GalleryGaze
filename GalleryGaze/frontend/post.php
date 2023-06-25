@@ -46,8 +46,9 @@ session_start();
                 </h1>
                 <header class="post__interactables-header">
                     <div class="userbox">
-                        <img class="userbox__avatar" src="../static/assets/images/<?= @$thisUserImageUrl ?>"
-                            alt="<?= @$thisUsername ?>">
+                        <a href="profile.php?id=<?= @$thisUserId ?>">
+                            <img class="userbox__avatar" src="../static/assets/images/<?= @$thisUserImageUrl ?>"
+                                alt="<?= @$thisUsername ?>"></a>
                         <div class="userbox__stats">
                             <a href="profile.php?id=<?= $userId ?>" class="userbox__stats-username"><?= @$thisUsername ?></a>
                             <span class="userbox__stats-row"><i class="fa-solid fa-user"></i>
@@ -79,24 +80,31 @@ session_start();
                                     class="fa-solid fa-share post__icon"></i></button>
                             <button class="post__buttonbox-button"><i
                                     class="fa-solid fa-circle-exclamation post__icon"></i></button>
-                        </div>
-                        <form id="follow-user" action="../backend/userfollow.php" method="post">
-                            <input type="hidden" name="followedUserID" value="<?= @$thisUserId ?>">
                             <?php if (isset($_SESSION['user'])) {
-                                include "../backend/check_follow.php";
-                                if (userIsFollowed($_SESSION['user']['id'], $thisUserId)) { ?>
-                                    <button id="follow-button" class="post__buttonbox-follow post__buttonbox-follow--unfollow"
-                                        type="submit" name="follow" value="followed">Unfollow</button>
-                                <?php } else { ?>
-                                    <button id="follow-button" class="post__buttonbox-follow" type="submit" name="follow"
-                                        value="followed">Follow</button>
-                                <?php } ?>
-                            <?php } else { ?>
-                                <button id="follow-button" class="post__buttonbox-follow post__buttonbox-follow--unfollow"
-                                    type="submit" name="follow" value="followed">LOG IN TO FOLLOW</button>
-                            <?php } ?>
-                        </form>
-                        <script src="../javascript/userfollow-post.js"></script>
+                                if ($_SESSION['user']['id'] == $thisUserId || $_SESSION['user']['role_id'] == 2) { ?>
+                                    <button class="post__buttonbox-button"><i class="fa-solid fa-trash post__icon"></i></button>
+                                <?php }
+                            } ?>
+                        </div>
+
+                        <?php if (isset($_SESSION['user']) && intval($_SESSION['user']['id']) !== intval($thisUserId)) { ?>
+                            <div class="profile__container-buttons">
+                                <form id="follow-user" action="../backend/userfollow.php" method="post">
+                                    <input type="hidden" name="followedUserID" value="<?= @$thisUserId ?>">
+                                    <?php
+                                    include "../backend/check_follow.php";
+                                    if (userIsFollowed($_SESSION['user']['id'], $thisUserId)) { ?>
+                                        <button id="follow-button"
+                                            class="profile__button-follow profile__button-follow--unfollow" type="submit"
+                                            name="follow" value="followed">Unfollow</button>
+                                    <?php } else { ?>
+                                        <button id="follow-button" class="profile__button-follow" type="submit" name="follow"
+                                            value="followed">Follow</button>
+                                    <?php } ?>
+                                </form>
+                            </div>
+                            <script src="../javascript/userfollow-post.js"></script>
+                        <?php } ?>
                     </div>
                 </header>
 
@@ -153,6 +161,7 @@ session_start();
 
                     <div class="post__miscellaneous-comments-container">
                         <?php include "../backend/loadcomments.php" ?>
+                        <script src="../javascript/deletecomment.js"></script>
                     </div>
                     <script src="../javascript/commentpost.js"></script>
                 </div>

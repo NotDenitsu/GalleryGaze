@@ -1,16 +1,16 @@
-$("#comment-post").submit(function (e) {
-    e.preventDefault(); // avoid to execute the actual submit of the form.
+$(".comment__content-form-delete").submit(function (e) {
+    e.preventDefault(); // Avoid executing the actual submit of the form.
 
     var form = $(this);
     var actionUrl = form.attr('action');
 
+    // Manually construct the data
+    var formData = new FormData(form[0]);
+    formData.append("delete-comment", "true"); // Add the "like" parameter
+
     const alertWindow = document.getElementById('alert-window');
     const closeButton = document.querySelector('.alert-window__close-button');
     const message = document.querySelector('.alert-window__text');
-
-    // Manually construct the data
-    var formData = new FormData(form[0]);
-    formData.append("post-comment", "true"); // Add the "like" parameter
 
     $.ajax({
         type: "POST",
@@ -20,26 +20,24 @@ $("#comment-post").submit(function (e) {
         processData: false,
         contentType: false,
         success: function (data) {
-
             if (data === "not_logged_in") {
-                // User is not logged in, redirect to login screen
+                // User is not logged in, handle the case accordingly
                 window.location.href = "login.php";
             } else if (data === "invalid_argument") {
+                // Invalid argument, handle the case accordingly
                 window.location.href = "home.php";
-            } else if (data === "empty_payload") {
-                alertFailiure("Can't send empty comment!");
             } else {
-                $(".post__miscellaneous-comments-container").html(data);
-                const commentField = document.querySelector(".comment-field__content-field");
-                commentField.value = "";
-                alertSuccess("Comment sent successfully!");
+                form.closest(".comment").remove();
+                alertSuccess("Comment deleted successfully!");
             }
-
+        },
+        error: function (xhr, status, error) {
+            // Handle the error case if needed
+            console.error(xhr, status, error);
         }
     });
 
     function alertFailiure(customMessage) {
-
         alertWindow.classList.add("alert-window--error");
         message.innerHTML = customMessage;
         alertWindow.style.display = 'block';
@@ -67,12 +65,9 @@ $("#comment-post").submit(function (e) {
             }, 500);
 
         }, 5000);
-
     }
 
     function alertSuccess(customMessage) {
-        // Show the success window
-
         alertWindow.classList.add("alert-window--success");
 
 
@@ -104,7 +99,3 @@ $("#comment-post").submit(function (e) {
 
     }
 });
-
-function alertSuccess(customMessage) {
-
-}

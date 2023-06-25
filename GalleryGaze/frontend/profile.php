@@ -180,30 +180,24 @@ include "../backend/connection.php";
                         <?= @$biography ?>
                     </p>
                 </div>
-                <?php if (isset($_SESSION['user'])) {
-                    if ($_SESSION['user']['id'] !== $id) {
-                        ?>
-                        <div class="profile__container-buttons">
-                            <form id="follow-user" action="../backend/userfollow.php" method="post">
-                                <input type="hidden" name="followedUserID" value="<?= @$id ?>">
-                                <?php if (isset($_SESSION['user'])) {
-                                    include "../backend/check_follow.php";
-                                    if (userIsFollowed($_SESSION['user']['id'], $id)) { ?>
-                                        <button id="follow-button" class="profile__button-follow profile__button-follow--unfollow"
-                                            type="submit" name="follow" value="followed">Unfollow</button>
-                                    <?php } else { ?>
-                                        <button id="follow-button" class="profile__button-follow" type="submit" name="follow"
-                                            value="followed">Follow</button>
-                                    <?php } ?>
-                            <?php } else { ?>
-                                <button id="follow-button" class="profile__button-follow profile__button-follow--unfollow"
-                                    type="submit" name="follow" value="followed">LOG IN TO FOLLOW</button>
-                            <?php } ?>
-                            </form>
-                        </div>
-                        <script src="../javascript/userfollow-profile.js"></script>
-                    <?php }
-                } ?>
+                <?php if (isset($_SESSION['user']) && intval($_SESSION['user']['id']) !== intval($id)) { ?>
+                    <div class="profile__container-buttons">
+                        <form id="follow-user" action="../backend/userfollow.php" method="post">
+                            <input type="hidden" name="followedUserID" value="<?= @$id ?>">
+                            <?php
+                                include "../backend/check_follow.php";
+                                if (userIsFollowed($_SESSION['user']['id'], $id)) { ?>
+                                    <button id="follow-button" class="profile__button-follow profile__button-follow--unfollow"
+                                        type="submit" name="follow" value="followed">Unfollow</button>
+                                <?php } else { ?>
+                                    <button id="follow-button" class="profile__button-follow" type="submit" name="follow"
+                                        value="followed">Follow</button>
+                                <?php } ?>
+                        </form>
+                    </div>
+                    <script src="../javascript/userfollow-profile.js"></script>
+                <?php } ?>
+
             </div>
             <div class="profile__container-content">
                 <h2 class="profile__container-content-text">Posts

@@ -1084,7 +1084,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	gap: 5px;
-	width: 180px;
+	max-width: 250px;
 }
 
 .post__icon--liked{
@@ -1271,8 +1271,14 @@ body {
 	padding: 10px 20px;
 	border: none;
 	border-radius: 10px;
-	background: linear-gradient(90deg, rgba(219, 50, 77, 1) 6%, rgba(215, 122, 97, 1) 100%);
+	background: #D77A61;
 	color: white;
+}
+
+.comment-field__content-button:hover{
+	cursor: pointer;
+	background-color: #bf674f;
+	transition: all 0.3s;
 }
 
 .comment-field__content-button:hover {}
@@ -1308,6 +1314,11 @@ body {
 	color: #1e3038;
 }
 
+.comment__content-buttons{
+	display: flex;
+	justify-content: space-between;
+}
+
 .comment__content-details-infobox-username {
 	font-weight: bold;
 	color: #f5f5f5;
@@ -1341,8 +1352,11 @@ body {
 	color: white;
 }
 
+
 .comment__content-deatils-button:hover {
+	cursor: pointer;
 	color: #f00;
+	transition: all 0.3s;
 }
 
 
