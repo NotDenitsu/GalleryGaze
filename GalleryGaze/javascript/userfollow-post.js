@@ -17,6 +17,7 @@ $("#follow-user").submit(function (e) {
         contentType: false,
         success: function (data) {
 
+
             if (data === "not_logged_in") {
                 // User is not logged in, redirect to login screen
                 window.location.href = "login.php";

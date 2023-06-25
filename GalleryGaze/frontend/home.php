@@ -25,13 +25,19 @@ session_start();
         <object data="logo.svg" type="image/svg+xml"></object> -->
     <div class="main-container__home main-container">
         <div class="main-container__posts">
-
-            <?php include "../backend/loadposts.php";?>
+            <?php
+            if (isset($_GET['query']) && !empty($_GET['query'])) {
+                include "../backend/search.php";
+            } else {
+                include "../backend/loadposts.php";
+            }
+            ?>
         </div>
         <div class="pagination">
             <?php include "../backend/pagination.php"; ?>
         </div>
     </div>
+
 
 </body>
 

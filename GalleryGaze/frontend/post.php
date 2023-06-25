@@ -96,7 +96,7 @@ session_start();
                                     type="submit" name="follow" value="followed">LOG IN TO FOLLOW</button>
                             <?php } ?>
                         </form>
-                        <script src="../javascript/userfollow.js"></script>
+                        <script src="../javascript/userfollow-post.js"></script>
                     </div>
                 </header>
 

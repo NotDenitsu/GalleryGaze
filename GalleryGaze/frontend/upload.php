@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="../static/css/normalize.css">
     <link rel="stylesheet" href="../static/css/style.css">
     <link rel="stylesheet" href="../static/assets/icons/fontawesome/css/all.min.css">
-    <script src="../javascript/upload-dropdown.js"></script>
+    <script src="../javascript/upload.js"></script>
     <script src="../javascript/navigation.js"></script>
     <script src="../javascript/upload-alert.js"></script>
 </head>

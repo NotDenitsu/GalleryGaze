@@ -22,10 +22,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $isFollowed = $stmt->fetchAll();
 
             if ($isFollowed) {
-                echo "del";
                 $sql = "DELETE FROM followers WHERE follower_id = ? AND followed_id = ?";
             } else {
-                echo "ins";
                 $sql = "INSERT INTO followers (`follower_id`, `followed_id`) VALUES (?, ?)";
             }
 
