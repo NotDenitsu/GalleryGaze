@@ -3,8 +3,8 @@ include "connection.php";
 
 // Assuming the current page is stored in the page variable
 $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
-$offset = 5;
-$limit = 5;
+$offset = 20;
+$limit = 20;
 $query = "SELECT COUNT(id) FROM posts";
 $picturesStatement = $connection->prepare($query);
 $picturesStatement->execute();

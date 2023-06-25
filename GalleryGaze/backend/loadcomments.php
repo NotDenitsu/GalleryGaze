@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     if (isset($_GET['id'])) {
         $postID = $_GET['id'];
 
-        $stmt = $connection->prepare("SELECT c.content, c.creation_date, u.image_url, u.username
+        $stmt = $connection->prepare("SELECT c.user_id, c.content, c.creation_date, u.image_url, u.username
                                         FROM comments c
                                         JOIN users u ON c.user_id = u.id
                                         WHERE c.post_id = ?
@@ -20,6 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             $creationDate = $date->format("M d, Y");
             $userImageUrl = $item['image_url'];
             $username = $item['username'];
+            $commentUserId = $item['user_id'];
 
             include "../templates/comment.php";
         }

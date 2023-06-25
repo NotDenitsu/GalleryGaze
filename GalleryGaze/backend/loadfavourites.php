@@ -4,8 +4,8 @@ include "connection.php";
 // Assuming the current page is stored in the page variable
 $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
 $currentUserId = $_SESSION['user']['id'];
-$offset = 5;
-$limit = 5;
+$offset = 20;
+$limit = 20;
 $query = "SELECT COUNT(p.id) FROM posts p INNER JOIN likes l ON p.id = l.post_id WHERE l.user_id = :user_id";
 $countStatement = $connection->prepare($query);
 $countStatement->bindValue(':user_id', $currentUserId, PDO::PARAM_INT); // Replace $currentUserId with the ID of the current user
