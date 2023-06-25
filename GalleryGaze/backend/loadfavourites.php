@@ -8,7 +8,7 @@ $offset = 20;
 $limit = 20;
 $query = "SELECT COUNT(p.id) FROM posts p INNER JOIN likes l ON p.id = l.post_id WHERE l.user_id = :user_id";
 $countStatement = $connection->prepare($query);
-$countStatement->bindValue(':user_id', $currentUserId, PDO::PARAM_INT); // Replace $currentUserId with the ID of the current user
+$countStatement->bindValue(':user_id', $currentUserId, PDO::PARAM_INT);
 $countStatement->execute();
 $result = $countStatement->fetch()[0];
 $totalPages = ceil($result / $limit);
@@ -26,7 +26,7 @@ $query = "SELECT p.*, u.username, u.image_url AS user_image_url,
           WHERE l.user_id = :user_id
           LIMIT :limit OFFSET :offset";
 $picturesStatement = $connection->prepare($query);
-$picturesStatement->bindValue(':user_id', $currentUserId, PDO::PARAM_INT); // Replace $currentUserId with the ID of the current user
+$picturesStatement->bindValue(':user_id', $currentUserId, PDO::PARAM_INT);
 $picturesStatement->bindValue(':limit', $limit, PDO::PARAM_INT);
 $picturesStatement->bindValue(':offset', $calculated_offset, PDO::PARAM_INT);
 $picturesStatement->execute();

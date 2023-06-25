@@ -1,6 +1,5 @@
 <?php
 //Load all pictures available
-
 $query = "SELECT p.*, u.username, u.image_url AS user_image_url,
                                 (SELECT COUNT(*) FROM comments c WHERE c.post_id = p.id) AS comment_count,
                                 (SELECT COUNT(*) FROM likes l WHERE l.post_id = p.id) AS like_count
@@ -8,7 +7,7 @@ $query = "SELECT p.*, u.username, u.image_url AS user_image_url,
                                 INNER JOIN users u ON p.user_id = u.id WHERE p.user_id=?";
 $picturesStatement = $connection->prepare($query);
 $picturesStatement->execute([$id]);
-//$connection->query($query)
+
 foreach ($picturesStatement->fetchAll() as $data) {
     $postId = $data['id'];
     $postTitle = $data["title"];
