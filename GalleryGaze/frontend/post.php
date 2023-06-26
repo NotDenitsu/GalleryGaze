@@ -82,7 +82,11 @@ session_start();
                                     class="fa-solid fa-circle-exclamation post__icon"></i></button>
                             <?php if (isset($_SESSION['user'])) {
                                 if ($_SESSION['user']['id'] == $thisUserId || $_SESSION['user']['role_id'] == 2) { ?>
-                                    <button class="post__buttonbox-button"><i class="fa-solid fa-trash post__icon"></i></button>
+                                    <form id="post-delete" action="../backend/deletepost.php" method="post">
+                                        <input type="hidden" name="post-id" value=<?= @$thisPostId ?>>
+                                        <button class="post__buttonbox-button" type="submit" name="delete-post"><i
+                                                class="fa-solid fa-trash post__icon"></i></button>
+                                    </form>
                                 <?php }
                             } ?>
                         </div>
