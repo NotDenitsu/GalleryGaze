@@ -56,11 +56,6 @@
                     <span class="navigation__tooltip">Dashboard</span>
                 </li>
                 <li class="navigation__item">
-                    <a href="#" class="navigation__link"><i class="fas fa-envelope"></i><span
-                            class="navigation__text">Messages</span></a>
-                    <span class="navigation__tooltip">Messages</span>
-                </li>
-                <li class="navigation__item">
                     <a href="favourites.php" class="navigation__link"><i class="fas fa-heart"></i><span
                             class="navigation__text">Favourites</span></a>
                     <span class="navigation__tooltip">Favourites</span>

@@ -17,15 +17,78 @@ session_start();
     <script src="../javascript/paperinput.js"></script>
     <script src="../javascript/share.js"></script>
     <style>
-        * {
-            box-sizing: border-box;
+        .prompt {
+            display: none;
+            position: fixed;
+            top: 0;
+            z-index: 9999;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.5);
         }
 
-        /* Post Styling */
+        .prompt__container {
+            position: fixed;
+            top: 50%;
+            right: 50%;
+            transform: translate(50%, -50%);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            gap: 10px;
+            max-width: 500px;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #223843;
+        }
 
+        .prompt__container-buttonbox {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+            width: 100%;
+        }
 
+        .prompt__container-buttonbox-button--confirm,
+        .prompt__container-buttonbox-button--cancel {
+            padding: 10px 30px;
+            border-radius: 5px;
+            outline: none;
+            border: none;
+        }
 
-        /*End of Comment Styling*/
+        .prompt__container-buttonbox-button--confirm {
+            background-color: #a0fd14;
+            color: white;
+            transition: all 0.3s linear;
+        }
+
+        .prompt__container-buttonbox-button--confirm:hover {
+            cursor: pointer;
+            background-color: #8ad21c;
+            transform: scale(1.05);
+            transition: all 0.3s linear;
+        }
+
+        .prompt__container-buttonbox-button--cancel {
+            background-color: #f00;
+            color: white;
+            transition: all 0.5s linear;
+        }
+
+        .prompt__container-buttonbox-button--cancel:hover {
+            cursor: pointer;
+            background-color: #b31832;
+            transform: scale(1.05);
+            transition: all 0.3s linear;
+        }
+
+        .prompt__container-message {
+            color: white;
+            font-size: 1.2em;
+        }
     </style>
 </head>
 
@@ -89,6 +152,7 @@ session_start();
                                     </form>
                                 <?php }
                             } ?>
+                            <script src="../javascript/deletepost.js"></script>
                         </div>
 
                         <?php if (isset($_SESSION['user']) && intval($_SESSION['user']['id']) !== intval($thisUserId)) { ?>
@@ -126,9 +190,13 @@ session_start();
                     <div class="post__miscellaneous-recommended-posts">
                         <?php include "../backend/loadrecommended.php"; ?>
                     </div>
+                    <?php if ($totalPages > 0) {?>
                     <div class="pagination">
                         <?php include "../backend/pagination.php"; ?>
                     </div>
+                    <?php } else {
+                        echo "<h3 class='post__miscellaneous-status'>NO RECOMMENDED POSTS</h3>";
+                    }?>
                 </div>
                 <div class="post__miscellaneous-comments">
                     <div class="post__miscellaneous-header">
@@ -177,6 +245,16 @@ session_start();
     <div class="alert-window" id="alert-window">
         <span class="alert-window__text"></span>
         <span class="alert-window__close-button">&times;</span>
+    </div>
+
+    <div class="prompt">
+        <div class="prompt__container">
+            <h3 class="prompt__container-message"></h3>
+            <div class="prompt__container-buttonbox">
+                <button class="prompt__container-buttonbox-button--cancel">Cancel</button>
+                <button class="prompt__container-buttonbox-button--confirm">Confirm</button>
+            </div>
+        </div>
     </div>
 </body>
 

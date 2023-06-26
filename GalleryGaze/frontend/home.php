@@ -38,7 +38,11 @@ session_start();
         </div>
     </div>
 
-
+    <!-- Alert window -->
+    <div class="alert-window" id="alert-window">
+        <span class="alert-window__text"></span>
+        <span class="alert-window__close-button">&times;</span>
+    </div>
 </body>
 
 </html>

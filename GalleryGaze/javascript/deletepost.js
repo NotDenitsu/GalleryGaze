@@ -1,4 +1,4 @@
-$(".comment__content-form-delete").submit(function (e) {
+$("#post-delete").submit(function (e) {
     e.preventDefault(); // Avoid executing the actual submit of the form.
 
     var form = $(this);
@@ -6,7 +6,7 @@ $(".comment__content-form-delete").submit(function (e) {
 
     // Manually construct the data
     var formData = new FormData(form[0]);
-    formData.append("delete-comment", "true"); // Add the "like" parameter
+    formData.append("delete-post", "true"); // Add the "like" parameter
 
     const alertWindow = document.getElementById('alert-window');
     const closeButton = document.querySelector('.alert-window__close-button');
@@ -18,7 +18,7 @@ $(".comment__content-form-delete").submit(function (e) {
     const promptCancel = document.querySelector(".prompt__container-buttonbox-button--cancel");
 
     promptWindow.style.display = "block";
-    promptContext.innerHTML = "Are you sure that you wish to delete this comment?";
+    promptContext.innerHTML = "Are you sure that you wish to delete this post?";
 
     
     promptCancel.addEventListener("click", () => {
@@ -42,8 +42,7 @@ $(".comment__content-form-delete").submit(function (e) {
                     // Invalid argument, handle the case accordingly
                     window.location.href = "home.php";
                 } else {
-                    form.closest(".comment").remove();
-                    alertSuccess("Comment deleted successfully!");
+                    window.location.href = "success.php?deleted=1";
                 }
             },
             error: function (xhr, status, error) {
