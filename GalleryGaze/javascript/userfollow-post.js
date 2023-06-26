@@ -29,7 +29,7 @@ $("#follow-user").submit(function (e) {
 
                 if (!followButton.classList.contains("post__buttonbox-follow--unfollow")) {
                     followButton.classList.add("post__buttonbox-follow--unfollow");
-                    followButton.innerHTML = "Unfollow"
+                    followButton.innerHTML = "Unfollow";
                 } else {
                     followButton.classList.remove("post__buttonbox-follow--unfollow");
                     followButton.innerHTML = "Follow";

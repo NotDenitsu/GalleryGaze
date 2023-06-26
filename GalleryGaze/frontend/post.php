@@ -8,7 +8,7 @@ session_start();
     <?php include "../backend/readpostdata.php" ?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?@$thisPostTitle?></title>
+    <title><?=@$thisPostTitle?></title>
     <link rel="stylesheet" href="../static/css/normalize.css">
     <link rel="stylesheet" href="../static/css/style.css">
     <link rel="stylesheet" href="../static/assets/icons/fontawesome/css/all.min.css">
@@ -157,16 +157,16 @@ session_start();
 
                         <?php if (isset($_SESSION['user']) && intval($_SESSION['user']['id']) !== intval($thisUserId)) { ?>
                             <div class="profile__container-buttons">
-                                <form id="follow-user" action="../backend/userfollow.php" method="post">
+                                <form id="follow-user" class="profile__container-buttons-form" action="../backend/userfollow.php" method="post">
                                     <input type="hidden" name="followedUserID" value="<?= @$thisUserId ?>">
                                     <?php
                                     include "../backend/check_follow.php";
                                     if (userIsFollowed($_SESSION['user']['id'], $thisUserId)) { ?>
                                         <button id="follow-button"
-                                            class="profile__button-follow profile__button-follow--unfollow" type="submit"
+                                            class="post__buttonbox-follow post__buttonbox-follow--unfollow" type="submit"
                                             name="follow" value="followed">Unfollow</button>
                                     <?php } else { ?>
-                                        <button id="follow-button" class="profile__button-follow" type="submit" name="follow"
+                                        <button id="follow-button" class="post__buttonbox-follow" type="submit" name="follow"
                                             value="followed">Follow</button>
                                     <?php } ?>
                                 </form>
