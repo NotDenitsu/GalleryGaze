@@ -76,8 +76,15 @@ session_start();
                                     class="fa-solid fa-download post__icon"></i></button>
                             <button id="share-button" class="post__buttonbox-button"><i
                                     class="fa-solid fa-share post__icon"></i></button>
-                            <button class="post__buttonbox-button"><i
+                            <button onclick="openReport(<?=@$thisPostId?>)"class="post__buttonbox-button"><i
                                     class="fa-solid fa-circle-exclamation post__icon"></i></button>
+                                    <?php 
+                                        $reportType="postReport";
+                                        $postId; 
+                                        $commentId;
+                                        $reportedId;
+                                        include "../templates/report.php";
+                                    ?>
                         </div>
                         <button class="post__buttonbox-follow post__buttonbox-follow--unfollow">Follow</button>
                     </div>
@@ -122,7 +129,7 @@ session_start();
                                 <div class="comment-field__content-username">
                                     <?= $_SESSION['user']['username'] ?>
                                 </div>
-                                <input type="hidden" name="post-id" value="<?= @$thisPostId ?>">
+                                <input type="hidden" name="post-id" value="<?=@$thisPostId?>">
                                 <textarea class="comment-field__content-field" name="comment"
                                     placeholder="Write a comment..." oninput="autoResize(this)"></textarea>
                                 <button class="comment-field__content-button" type="submit"
@@ -147,5 +154,7 @@ session_start();
         <span class="alert-window__close-button">&times;</span>
     </div>
 </body>
+
+<script src="../javascript/report.js"></script>
 
 </html>

@@ -50,6 +50,7 @@ include "../backend/connection.php";
                         $reporterStatement = $connection->prepare("SELECT * FROM users WHERE id=?");
                         $reporterStatement->execute([$reporterUserId]);
                         $reporterData = $reporterStatement->fetchAll()[0];
+                        $reporterId = $reporterData["id"];
                         $reporterImageUrl = $reporterData["image_url"];
                         $reporterUsername = $reporterData["username"];
                         $reporterStatement->closeCursor();
@@ -65,6 +66,7 @@ include "../backend/connection.php";
                 </div>
                 <form class="report_box report_box--bottom"  action="../backend/resolveComment.php" method="post">
                     <input type="hidden" name="commentId" value="<?=$reportedCommentId?>">
+                    <input type="hidden" name="reporterId" value="<?=$reporterUserId?>">
                     <button class="report_box-button"  type="submit" name="resolve">Mark as Resolved!</button>
                     <h1 class="report_info-username report_info-username--reporter">Reported by <?=$reporterUsername?></h1>
                     <a href="../frontend/profile.php?id=<?=$reporterUserId?>"><img src="../static/assets/images/<?=$reporterImageUrl?>" class="report_image report_image--reporter" alt="<?=$reporterUsername?>"></a>
@@ -84,6 +86,7 @@ include "../backend/connection.php";
                     $postReportStatement->execute();
                     $postReportsData = $postReportStatement->fetchAll();
                     foreach($postReportsData as $data){
+                        $postReportId = $data["id"];
                         $postId = $data["post_id"];
                         $reporterUserId = $data["reporter_id"];
                         $reason = $data["reason"];
@@ -115,8 +118,7 @@ include "../backend/connection.php";
                         </div>
                     </div>
                     <form class="report_box report_box--bottom" action="../backend/resolvePost.php" method="post">
-                        <input type="hidden" name="reportedId" value="<?=$postId?>">
-                        <input type="hidden" name="reporterId" value="<?=$reporterUserId?>">
+                        <input type="hidden" name="postReportId" value="<?=$postReportId?>">
                         <button class="report_box-button" type="submit" name="resolve">Mark as Resolved!</button>
                         <h1 class="report_info-username report_info-username--reporter">Reported by <?=$reporterUsername?></h1>
                         <a href="../frontend/profile.php?id=<?=$reporterUserId?>"><img src="../static/assets/images/<?=$reporterImageUrl?>" class="report_image report_image--reporter" alt="<?=$reporterUsername?>"></a>

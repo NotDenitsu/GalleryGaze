@@ -8,9 +8,18 @@
                 <time class="comment__content-details-infobox-username"><?=@$username?></time>
                 <div class="comment__content-details-infobox-date"><?=@$creationDate?></div>
             </div>
-            <button class="comment__content-deatils-button"><i class="fas fa-flag"></i></button>
+            <button onclick="openReport(<?=@$commentId?>)" class="comment__content-deatils-button"><i class="fas fa-flag"></i></button>
+            <?php 
+            $reportType="commentReport";
+                $postId;
+                // $commentId = @$commentId;
+                $reportedId;
+                include "../templates/report.php";
+                ?>
         </div>
         <div class="comment__content-message"><?=@$content?></div>
         <button class="comment__content-deatils-button"><i class="fa-regular fa-heart"></i></button>
     </div>
 </div>
+
+
