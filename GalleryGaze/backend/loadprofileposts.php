@@ -6,7 +6,7 @@ $query = "SELECT p.*, u.username, u.image_url AS user_image_url,
                                 FROM posts p
                                 INNER JOIN users u ON p.user_id = u.id WHERE p.user_id=?";
 $picturesStatement = $connection->prepare($query);
-$picturesStatement->execute([$id]);
+$picturesStatement->execute([$thisProfileId]);
 
 foreach ($picturesStatement->fetchAll() as $data) {
     $postId = $data['id'];

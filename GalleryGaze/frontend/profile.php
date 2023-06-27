@@ -158,7 +158,7 @@ include "../backend/connection.php";
                 <div class="profile__container-details-box">
                     <div class="profile__container-user">
                         <div class="profile__avatar-frame">
-                            <img class="profile__avatar" src="../static/assets/images/default-avatar.jpg">
+                            <img class="profile__avatar" src="../static/assets/images/<?=@$image_url?>">
                         </div>
 
                         <div class="profile__container-stats">
@@ -173,20 +173,27 @@ include "../backend/connection.php";
                             </h4>
                         </div>
                     </div>
-                    <button class="profile__button-report"><i class="fa fa-solid fa-circle-exclamation"></i></button>
+                    <button onclick="openReport(<?=@$thisProfileId?>)" class="profile__button-report"><i class="fa fa-solid fa-circle-exclamation"></i></button>
+                    <?php 
+                            $reportType="userReport";
+                            $postId; 
+                            $commentId;
+                            $reportedId = @$thisProfileId;
+                            include "../templates/report.php";
+                     ?>
                 </div>
                 <div class="profile__container-details-box">
                     <p class="profile__container-biography">
                         <?= @$biography ?>
                     </p>
                 </div>
-                <?php if (isset($_SESSION['user']) && intval($_SESSION['user']['id']) !== intval($id)) { ?>
+                <?php if (isset($_SESSION['user']) && intval($_SESSION['user']['id']) !== intval($thisProfileId)) { ?>
                     <div class="profile__container-buttons">
                         <form id="follow-user" action="../backend/userfollow.php" method="post">
-                            <input type="hidden" name="followedUserID" value="<?= @$id ?>">
+                            <input type="hidden" name="followedUserID" value="<?= @$thisProfileId ?>">
                             <?php
                                 include "../backend/check_follow.php";
-                                if (userIsFollowed($_SESSION['user']['id'], $id)) { ?>
+                                if (userIsFollowed($_SESSION['user']['id'], $thisProfileId)) { ?>
                                     <button id="follow-button" class="profile__button-follow profile__button-follow--unfollow"
                                         type="submit" name="follow" value="followed">Unfollow</button>
                                 <?php } else { ?>
@@ -212,5 +219,7 @@ include "../backend/connection.php";
 
 
 </body>
+
+<script src="../javascript/report.js"></script>
 
 </html>
