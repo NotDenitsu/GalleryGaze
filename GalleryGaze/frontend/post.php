@@ -153,13 +153,13 @@ session_start();
                                 <?php }
                             } ?>
                             <script src="../javascript/deletepost.js"></script>
-                                    <?php 
-                                        $reportType="postReport";
-                                        $postId; 
-                                        $commentId;
-                                        $reportedId;
-                                        include "../templates/report.php";
-                                    ?>
+                                <?php 
+                                    $reportType="postReport";
+                                    $postId; 
+                                    $commentId;
+                                    $reportedId;
+                                    include "../templates/report.php";
+                                ?>
                         </div>
 
                         <?php if (isset($_SESSION['user']) && intval($_SESSION['user']['id']) !== intval($thisUserId)) { ?>

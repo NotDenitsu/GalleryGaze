@@ -15,7 +15,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     }if(isset($_POST["userReport"])){
 
         $userReportStatement = $connection->prepare("INSERT INTO user_reports(reporter_id, reported_id, reason, description) VALUES (?, ?, ?, ?)");
-        $userReportStatement->execute([$_POST["reportedId"], $_SESSION['user']['id'], $_POST['reason'], $_POST['description']]);
+        $userReportStatement->execute([$_SESSION['user']['id'], $_POST['reportedId'], $_POST['reason'], $_POST['description']]);
         $userReportStatement->closeCursor();
     }
     //header("location: ../frontend/settings.php");

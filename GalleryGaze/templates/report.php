@@ -62,19 +62,18 @@
         $idToUse = @$commentId;
     }else if($reportType=="postReport"){
         $idToUse = @$thisPostId;
-    }
-    else{
+    }else if($reportType=="userReport"){
         $idToUse = @$reportedId;
     }
 ?>
 
 <div class="report__background report__hidden" id="id<?=$idToUse?>">
     <div class="report__card">
-        <button onclick="closeReport(<?=@$commentId?>)"class="report__card-close-button">X</button>
+        <button onclick="closeReport(<?=@$idToUse?>)"class="report__card-close-button">X</button>
         <form class="report__card-form" action="../backend/handleReport.php" method="post">
             <input type="hidden" name="postId" value="<?=@$thisPostId?>">
             <input type="hidden" name="commentId" value="<?=@$commentId?>">
-            <input type="hidden" name="reportedId" value="<?=$reportedId?>">
+            <input type="hidden" name="reportedId" value="<?=@$reportedId?>">
             <input type="hidden" name="description" value="<?=@$thisPostDescription?>">
             <label for="reason">Choose a report reason:</label>
 
