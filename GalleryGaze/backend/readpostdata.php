@@ -15,6 +15,7 @@
     FROM posts p
     INNER JOIN users u ON p.user_id = u.id
     WHERE p.id = ?";
+    
     $postStatement = $connection->prepare($query);
     $postStatement->execute([$thisPostId]);
     $postData = $postStatement->fetch(PDO::FETCH_ASSOC);
