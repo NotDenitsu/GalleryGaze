@@ -137,8 +137,8 @@ session_start();
                                     ?> fa-heart post__icon"></i></button>
                             </form>
                             <script src="../javascript/likepost.js"></script>
-                            <button class="post__buttonbox-button"><i
-                                    class="fa-solid fa-download post__icon"></i></button>
+                            <a href="../static/assets/images/<?= @$thisPostImageUrl ?>" class="post__buttonbox-button" download><i
+                                    class="fa-solid fa-download post__icon" download></i></a>
                             <button id="share-button" class="post__buttonbox-button"><i
                                     class="fa-solid fa-share post__icon"></i></button>
                             <button class="post__buttonbox-button"><i
