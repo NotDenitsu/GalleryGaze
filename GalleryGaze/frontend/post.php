@@ -141,7 +141,7 @@ session_start();
                                     class="fa-solid fa-download post__icon" download></i></a>
                             <button id="share-button" class="post__buttonbox-button"><i
                                     class="fa-solid fa-share post__icon"></i></button>
-                            <button onclick="openReport(<?=@$thisPostId?>)"class="post__buttonbox-button"><i
+                            <button onclick="openReport(<?=@$thisPostId?>)" class="post__buttonbox-button"><i
                                     class="fa-solid fa-circle-exclamation post__icon"></i></button>
                             <?php if (isset($_SESSION['user'])) {
                                 if ($_SESSION['user']['id'] == $thisUserId || $_SESSION['user']['role_id'] == 2) { ?>
