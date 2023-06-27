@@ -15,10 +15,10 @@ include "../backend/utilities.php";
 
     <link rel="stylesheet" href="../static/css/normalize.css">
     <link rel="stylesheet" href="../static/css/style.css">
-    <script src="https://kit.fontawesome.com/689600d0a2.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../static/assets/icons/fontawesome/css/all.min.css">
 </head>
 <body>
-    <div class="authentication__container-main container">
+    <div class="authentication__container-main">
         <div class="authentication__container-image">
             <img class="authentication__image" src="../static/assets/images/horse.jpg">
         </div>
@@ -39,6 +39,8 @@ include "../backend/utilities.php";
                     </div>
                 </div>
                 <button type="submit" name="login" class="authentication__button-submit">Sign In</button>
+                <span class="authentication__text">OR</span>
+                <a href="home.php" class="authentication__button-submit authentication__button-guest">Continue as Guest</a>
             </form>
 
             <label>Don't have an account? <a class="authentication__link" href="register.php">Sign Up</a></label>
