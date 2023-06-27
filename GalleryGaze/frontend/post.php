@@ -141,7 +141,7 @@ session_start();
                                     class="fa-solid fa-download post__icon"></i></button>
                             <button id="share-button" class="post__buttonbox-button"><i
                                     class="fa-solid fa-share post__icon"></i></button>
-                            <button class="post__buttonbox-button"><i
+                            <button onclick="openReport(<?=@$thisPostId?>)"class="post__buttonbox-button"><i
                                     class="fa-solid fa-circle-exclamation post__icon"></i></button>
                             <?php if (isset($_SESSION['user'])) {
                                 if ($_SESSION['user']['id'] == $thisUserId || $_SESSION['user']['role_id'] == 2) { ?>
@@ -153,6 +153,13 @@ session_start();
                                 <?php }
                             } ?>
                             <script src="../javascript/deletepost.js"></script>
+                                    <?php 
+                                        $reportType="postReport";
+                                        $postId; 
+                                        $commentId;
+                                        $reportedId;
+                                        include "../templates/report.php";
+                                    ?>
                         </div>
 
                         <?php if (isset($_SESSION['user']) && intval($_SESSION['user']['id']) !== intval($thisUserId)) { ?>
@@ -219,7 +226,7 @@ session_start();
                                 <div class="comment-field__content-username">
                                     <?= $_SESSION['user']['username'] ?>
                                 </div>
-                                <input type="hidden" name="post-id" value="<?= @$thisPostId ?>">
+                                <input type="hidden" name="post-id" value="<?=@$thisPostId?>">
                                 <textarea class="comment-field__content-field" name="comment"
                                     placeholder="Write a comment..." oninput="autoResize(this)"></textarea>
                                 <button id="comment-post-button" class="comment-field__content-button" type="submit"
@@ -257,5 +264,7 @@ session_start();
         </div>
     </div>
 </body>
+
+<script src="../javascript/report.js"></script>
 
 </html>

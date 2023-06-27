@@ -5,18 +5,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
     if (isset($_GET['id'])) {
         $postID = $_GET['id'];
-
-        $stmt = $connection->prepare("SELECT c.id, c.user_id, c.content, c.creation_date, u.image_url, u.username
+      
+        $stmt = $connection->prepare("SELECT c.id, c.content, c.creation_date, u.image_url, u.username
                                         FROM comments c
                                         JOIN users u ON c.user_id = u.id
                                         WHERE c.post_id = ?
                                         ORDER BY c.creation_date DESC");
         $stmt->execute([$postID]);
-        $comment = $stmt->fetchAll();
+        $commentData = $stmt->fetchAll();
 
-        foreach ($comment as $item) {
-            $content = $item['content'];
-            $date = new DateTime($item['creation_date']);
+        foreach ($commentData as $data) {
+            $commentId = $data['id'];
+            $content = $data['content'];
+            $date = new DateTime($data['creation_date']);
             $creationDate = $date->format("M d, Y");
             $userImageUrl = $item['image_url'];
             $username = $item['username'];
