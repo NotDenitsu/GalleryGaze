@@ -23,6 +23,7 @@ if (!isset($_SESSION['user'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Settings</title>
+    <link rel="icon" href="../static/assets/images/logo.png">
     <link rel="stylesheet" href="../static/css/normalize.css">
     <link rel="stylesheet" href="../static/css/style.css">
     <link rel="stylesheet" href="../static/assets/icons/fontawesome/css/all.min.css">
