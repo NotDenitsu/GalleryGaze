@@ -6,29 +6,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_SESSION['user'])) {
         $userID = $_SESSION['user']['id'];
 
-        if (isset($_POST['like'])) {
+        if (isset($_POST['follow'])) {
             // Validate and sanitize the post ID
-            $postID = filter_var($_POST['postId'], FILTER_VALIDATE_INT);
+            $followedUserID = filter_var($_POST['followedUserID'], FILTER_VALIDATE_INT);
 
-            if ($postID === false) {
+            if ($followedUserID === false) {
                 // Invalid post ID, handle the error accordingly
                 echo "invalid_argument";
                 exit();
             }
 
-            $sql = "SELECT * FROM likes WHERE user_id = ? AND post_id = ?";
+            $sql = "SELECT * FROM followers WHERE follower_id = ? AND followed_id = ?";
             $stmt = $connection->prepare($sql);
-            $stmt->execute([$userID, $postID]);
-            $isLiked = $stmt->fetchAll();
+            $stmt->execute([$userID, $followedUserID]);
+            $isFollowed = $stmt->fetchAll();
 
-            if ($isLiked) {
-                $sql = "DELETE FROM likes WHERE user_id = ? AND post_id = ?";
+            if ($isFollowed) {
+                $sql = "DELETE FROM followers WHERE follower_id = ? AND followed_id = ?";
             } else {
-                $sql = "INSERT INTO likes (`user_id`, `post_id`) VALUES (?, ?)";
+                $sql = "INSERT INTO followers (`follower_id`, `followed_id`) VALUES (?, ?)";
             }
 
             $stmt = $connection->prepare($sql);
-            $stmt->execute([$userID, $postID]);
+            $stmt->execute([$userID, $followedUserID]);
         }
     } else {
         echo "not_logged_in";

@@ -18,7 +18,7 @@ include "../backend/utilities.php";
     <link rel="stylesheet" href="../static/assets/icons/fontawesome/css/all.min.css">
 </head>
 <body>
-    <div class="authentication__container-main container">
+    <div class="authentication__container-main">
         <div class="authentication__container-image">
             <img class="authentication__image" src="../static/assets/images/horse.jpg">
         </div>

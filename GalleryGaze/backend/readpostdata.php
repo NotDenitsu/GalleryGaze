@@ -23,6 +23,7 @@
     $thisPostId = $postData["id"];
     $thisPostTitle = $postData["title"];
     $thisPostDescription = $postData["description"];
+    $thisPostTags = $postData["tags"];
     $thisPostImageUrl = $postData["image_url"];
     $thisCommentCount = $postData["comment_count"];
     $thisUserId = $postData["user_id"];

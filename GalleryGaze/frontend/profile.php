@@ -10,7 +10,7 @@ include "../backend/loadprofile.php";
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile</title>
+    <title><?=@$username ?></title>
 
     <style>
         .postbox {
@@ -50,7 +50,7 @@ include "../backend/loadprofile.php";
             transition: filter .3s, opacity .3s;
         }
 
-        .postbox__image-img{
+        .postbox__image-img {
             width: 100%;
             object-fit: cover;
         }
@@ -141,6 +141,7 @@ include "../backend/loadprofile.php";
 
     <link rel="stylesheet" href="../static/css/normalize.css">
     <link rel="stylesheet" href="../static/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <link rel="stylesheet" href="../static/assets/icons/fontawesome/css/all.min.css">
     <script src="../javascript/navigation.js"></script>
 </head>
@@ -179,43 +180,31 @@ include "../backend/connection.php";
                         <?= @$biography ?>
                     </p>
                 </div>
-                <div class="profile__container-buttons">
-                    <button class="profile__button-follow">Follow</button>
-                </div>
+                <?php if (isset($_SESSION['user']) && intval($_SESSION['user']['id']) !== intval($id)) { ?>
+                    <div class="profile__container-buttons">
+                        <form id="follow-user" action="../backend/userfollow.php" method="post">
+                            <input type="hidden" name="followedUserID" value="<?= @$id ?>">
+                            <?php
+                                include "../backend/check_follow.php";
+                                if (userIsFollowed($_SESSION['user']['id'], $id)) { ?>
+                                    <button id="follow-button" class="profile__button-follow profile__button-follow--unfollow"
+                                        type="submit" name="follow" value="followed">Unfollow</button>
+                                <?php } else { ?>
+                                    <button id="follow-button" class="profile__button-follow" type="submit" name="follow"
+                                        value="followed">Follow</button>
+                                <?php } ?>
+                        </form>
+                    </div>
+                    <script src="../javascript/userfollow-profile.js"></script>
+                <?php } ?>
+
             </div>
             <div class="profile__container-content">
                 <h2 class="profile__container-content-text">Posts
                     <?= @$postsCount ?>
                 </h2>
                 <div class="profile__container-content-posts">
-                    <?php
-                    //Load all pictures available
-
-                    $query = "SELECT * FROM posts WHERE user_id=?";
-                    $picturesStatement = $connection->prepare($query);
-                    $picturesStatement->execute([$id]);
-                    //$connection->query($query)
-                    foreach ($picturesStatement->fetchAll() as $data) {
-                        $postTitle = $data["title"];
-                        $uploadDate = $data["upload_date"];
-                        $postImageUrl = $data["image_url"];
-                        $userId = $data['user_id'];
-                        $picturesStatement->closeCursor();
-
-                        $userStatement = $connection->prepare("SELECT * FROM users WHERE users.id=?");
-                        $userStatement->execute([$userId]);
-                        $userdata = $userStatement->fetchAll();
-                        $userName = $userdata[0]["username"];
-                        $userImageUrl = $userdata[0]["image_url"];
-                        $userStatement->closeCursor();
-
-                        ?>
-
-                        <?php
-                        include "../templates/postbox.php";
-                        ?>
-
-                    <?php } ?>
+                    <?php include "../backend/loadprofileposts.php"; ?>
                 </div>
             </div>
         </div>

@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 } else {
                     $stmt = $connection->prepare("INSERT INTO users (`username`, `email`, `password`) VALUES (?,?,?)");
                     $stmt->execute([$username, $email, password_hash($password, PASSWORD_BCRYPT)]);
-                    header("location: home.php");
+                    header("location: success.php?registration=1");
                     exit;
                 }
             }

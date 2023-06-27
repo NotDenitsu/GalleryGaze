@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Get the share button element
     const shareButton = document.getElementById('share-button');
-    // Get the success window element
+    // Get the alert window element
     const alertWindow = document.getElementById('alert-window');
     // Get the close button element
     const closeButton = document.querySelector('.alert-window__close-button');
@@ -15,12 +15,12 @@ document.addEventListener('DOMContentLoaded', () => {
         // Copy the URL to the clipboard
         navigator.clipboard.writeText(window.location.href)
             .then(() => {
-                // Show the success window
+                // Show the alert window
                 alertWindow.classList.add("alert-window--success");
                 message.innerHTML = "URL copied to clipboard!";
                 alertWindow.style.display = 'block';
 
-                // Close the success window on close button click
+                // Close the alert window on close button click
                 closeButton.addEventListener('click', () => {
                     alertWindow.style.animation = 'fade-out 0.5s';
                     setTimeout(() => {
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
                       }, 500);
                 });
 
-                // Close the success window automatically after 3 seconds
+                // Close the alert window automatically after 3 seconds
                 setTimeout(() => {
                     alertWindow.style.animation = 'fade-out 0.5s';
                     setTimeout(() => {
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
                       }, 500);
                 });
 
-                // Close the success window automatically after 3 seconds
+                // Close the alert window automatically after 3 seconds
                 setTimeout(() => {
                     alertWindow.style.animation = 'fade-out 0.5s';
                     setTimeout(() => {

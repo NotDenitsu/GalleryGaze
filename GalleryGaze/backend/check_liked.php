@@ -7,9 +7,10 @@ function postIsLiked($userID, $postID) {
     $isLiked = $stmt->fetchAll();
 
     if($isLiked){
-        echo "fas";
+        echo "fas post__icon--liked";
     } else {
         echo "fa-regular";
     }
 }
+
 ?>

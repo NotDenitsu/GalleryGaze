@@ -3,34 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const fileInput = document.getElementById('upload-file');
   const uploadBtn = document.getElementById('upload-button');
 
-  uploadContainer.addEventListener('dragover', (e) => {
-    e.preventDefault();
-    uploadContainer.classList.add('upload__highlight');
-  });
-
-  uploadContainer.addEventListener('dragleave', () => {
-    uploadContainer.classList.remove('upload__highlight');
-  });
-
-  uploadContainer.addEventListener('drop', (e) => {
-    e.preventDefault();
-    uploadContainer.classList.remove('upload__highlight');
-    const files = e.dataTransfer.files;
-    if (files.length == 1) {
-      handleFiles(files);
-    } else {
-      // Get the current URL
-      const url = new URL(window.location.href);
-
-      // Add a parameter to the URL
-      url.searchParams.set("result", "invalid-count");
-
-      // Replace the current URL with the updated URL
-      window.history.replaceState({}, "", url.href);
-      window.location.reload();
-    }
-  });
-
   uploadBtn.addEventListener('click', () => {
     fileInput.click();
   });
@@ -48,7 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (previousImage) {
       previousImage.parentNode.removeChild(previousImage);
     }
-
 
     // Get the first file from the files array
     const file = files[0];
