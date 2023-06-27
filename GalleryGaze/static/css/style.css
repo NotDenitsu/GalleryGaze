@@ -1193,7 +1193,8 @@ body {
 	background: none;
 	color: white;
 	text-align: center;
-	font-size: 2em;
+	font-size: 1em;
+	line-height:2em;
 }
 
 .post__buttonbox-button:hover {
@@ -1234,7 +1235,8 @@ body {
 }
 
 .post__icon {
-	font-size: 25px;
+	font-size: 1.5625em;
+	line-height: 1.5625;
 }
 
 .post__description-container {

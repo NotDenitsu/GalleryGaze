@@ -34,7 +34,8 @@ $picturesStatement->execute();
 // Fetch and process the results
 foreach ($picturesStatement->fetchAll() as $data) {
     $postTitle = $data["title"];
-    $uploadDate = $data["upload_date"];
+    $uploadDate = new Datetime($data["upload_date"]);
+    $uploadDateFormatted = $uploadDate->format("M d, Y");
     $postImageUrl = $data["image_url"];
     $userId = $data['user_id'];
     $postId = $data['id'];
