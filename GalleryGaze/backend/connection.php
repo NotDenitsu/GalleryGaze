@@ -2,8 +2,8 @@
 $servername = "localhost";
 $database = "gallerygaze";
 $name = "root";
-$password = "Denis123";
-
+$password = "";
+global $connection;
 try {
   $connection = new PDO("mysql:host=$servername;dbname=$database", $name, $password);
   // set the PDO error mode to exception

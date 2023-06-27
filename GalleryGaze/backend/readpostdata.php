@@ -20,6 +20,7 @@
     $postData = $postStatement->fetch(PDO::FETCH_ASSOC);
     $postStatement->closeCursor();
 
+    $thisPostId = $postData["id"];
     $thisPostTitle = $postData["title"];
     $thisPostDescription = $postData["description"];
     $thisPostTags = $postData["tags"];
