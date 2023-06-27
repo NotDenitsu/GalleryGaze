@@ -33,6 +33,11 @@
 	--comment-field-color: #f9f9f9;
 }
 
+@font-face {
+	font-family: OpenSans;
+	src: url("../fonts/OpenSans/OpenSans-VariableFont_wdth\,wght.ttf");
+}
+
 /* Scroll Bar Style */
 
 * {
@@ -40,9 +45,6 @@
 	scrollbar-width: thin;
 	scrollbar-color: var(--scroll-bar-color);
 
-	/*Font settings*/
-	font-size: 16px;
-	line-height: 1.25em;
 }
 
 *::-webkit-scrollbar {
@@ -76,6 +78,12 @@ body {
 	background-attachment: fixed;
 	height: 100%;
 	overflow: hidden;
+
+	/*Font settings*/
+	font-family:OpenSans;
+	font-size: 16px;
+	line-height: 1.25em;
+
 }
 
 /*End of universal styling*/
@@ -1526,7 +1534,9 @@ body {
 	left: 35px;
 	top: 0%;
 	color: white;
-	font-size: 2em;
+
+	font-size: 1.5em;
+	line-height:1.5em;
 	margin-left: 10px;
 	text-align: center;
 }
