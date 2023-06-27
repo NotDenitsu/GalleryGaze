@@ -13,6 +13,7 @@ include "../backend/loadprofile.php";
     <title>
         <?= @$username ?>
     </title>
+    <link rel="icon" href="../static/assets/images/logo.png">
 
     <style>
         .postbox {
