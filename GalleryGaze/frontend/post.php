@@ -100,7 +100,7 @@ session_start();
     <div class="main-container">
         <div class="post">
             <div class="post__imagebox">
-                <img class="post__imagebox-image" src="../static/assets/images/<?= @$thisPostImageUrl ?>"
+                <img class="post__imagebox-image" src="../../uploads/<?= @$thisPostImageUrl ?>"
                     alt="<?= @$thisPostTitle ?>">
             </div>
             <div class="post__interactables">
@@ -137,11 +137,11 @@ session_start();
                                     ?> fa-heart post__icon"></i></button>
                             </form>
                             <script src="../javascript/likepost.js"></script>
-                            <button class="post__buttonbox-button"><i
-                                    class="fa-solid fa-download post__icon"></i></button>
+                            <a href="../static/assets/images/<?= @$thisPostImageUrl ?>" class="post__buttonbox-button" download><i
+                                    class="fa-solid fa-download post__icon" download></i></a>
                             <button id="share-button" class="post__buttonbox-button"><i
                                     class="fa-solid fa-share post__icon"></i></button>
-                            <button onclick="openReport(<?=@$thisPostId?>)"class="post__buttonbox-button"><i
+                            <button onclick="openReport(<?=@$thisPostId?>)" class="post__buttonbox-button"><i
                                     class="fa-solid fa-circle-exclamation post__icon"></i></button>
                             <?php if (isset($_SESSION['user'])) {
                                 if ($_SESSION['user']['id'] == $thisUserId || $_SESSION['user']['role_id'] == 2) { ?>

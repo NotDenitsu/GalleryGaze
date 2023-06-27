@@ -5,9 +5,9 @@
     <div class="comment__content">
         <div class="comment__content-details">
             <div class="comment__content-details-infobox">
-                <time class="comment__content-details-infobox-username">
+                <span class="comment__content-details-infobox-username">
                     <?= @$username ?>
-                </time>
+                </span>
                 <div class="comment__content-details-infobox-date">
                     <?= @$creationDate ?>
                 </div>

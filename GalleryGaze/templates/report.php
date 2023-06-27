@@ -70,7 +70,7 @@
 <div class="report__background report__hidden" id="id<?=$idToUse?>">
     <div class="report__card">
         <button onclick="closeReport(<?=@$idToUse?>)"class="report__card-close-button">X</button>
-        <form class="report__card-form" action="../backend/handleReport.php" method="post">
+        <form id="report-form" class="report__card-form" action="../backend/handleReport.php" method="post">
             <input type="hidden" name="postId" value="<?=@$thisPostId?>">
             <input type="hidden" name="commentId" value="<?=@$commentId?>">
             <input type="hidden" name="reportedId" value="<?=@$reportedId?>">
@@ -91,8 +91,9 @@
                     
                     <textarea id="description" class="report__textarea"></textarea>
             <?php }?>
-            <button type="submit" name="<?=@$reportType?>">Report</button>
+            <button id="submit-report" type="submit" name="<?=@$reportType?>">Report</button>
         </form>
         <!-- <script src="../javascript/closeReport.js"></script>  -->
     </div>
+    <script src="../javascript/handleReport.js"></script>
 </div>
