@@ -1,5 +1,5 @@
 <div class="postbox">
-    <a class="postbox__image" href="post.php?id=<?=$postId?>"><img class="postbox__image-img" src="../static/assets/images/<?=@$postImageUrl?>" alt="<?=@$postTitle?>"></a>
+    <a class="postbox__image" href="post.php?id=<?=$postId?>"><img class="postbox__image-img" src="../../uploads/<?=@$postImageUrl?>" alt="<?=@$postTitle?>"></a>
             
     <!-- Heart icon -->
      <i class="fa-regular fa-heart postbox__icon postbox__icon--left postbox__icon--top-margin1"></i>
@@ -11,7 +11,7 @@
     
             
     <!-- Download icon -->
-    <a href="../static/assets/images/<?=@$postImageUrl?>" download="<?=@$postTitle?>">
+    <a href=".../uploads/<?=@$postImageUrl?>" download="<?=@$postTitle?>">
         <i class="fa-solid fa-download postbox__icon postbox__icon--right postbox__icon--top-margin1"></i>
     </a>
     <!-- <img  src="../static/icons/download-solid.svg"> -->

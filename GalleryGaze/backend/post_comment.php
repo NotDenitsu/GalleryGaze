@@ -37,6 +37,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         $commentId = $item['id'];
                         $postUserId = $item['post_user_id'];
 
+
+                        $reportType="commentReport";
+                                        $postId;
+                                        // $commentId = @$commentId;
+                                        $reportedId;
+                                        include "../templates/report.php";
+
                         echo '
                         <div class="comment">
                             <a href="profile.php?id=' . @$commentUserId . '" class="comment__frame">
@@ -52,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                             ' . @$creationDate . '
                                         </div>
                                     </div>
-                                    <button class="comment__content-deatils-button"><i class="fas fa-flag"></i></button>
+                                    <button onclick="openReport('.@$commentId.')" class="comment__content-deatils-button"><i class="fas fa-flag"></i></button>
                                 </div>
                                 <div class="comment__content-message">
                                     ' . @$content . '

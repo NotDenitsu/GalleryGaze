@@ -100,7 +100,7 @@ session_start();
     <div class="main-container">
         <div class="post">
             <div class="post__imagebox">
-                <img class="post__imagebox-image" src="../static/assets/images/<?= @$thisPostImageUrl ?>"
+                <img class="post__imagebox-image" src="../../uploads/<?= @$thisPostImageUrl ?>"
                     alt="<?= @$thisPostTitle ?>">
             </div>
             <div class="post__interactables">

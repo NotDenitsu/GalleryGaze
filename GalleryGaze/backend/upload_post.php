@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $newFilename = 'image_' . $uniqueId . '.' . $fileExtension;
 
             // Specify the destination directory where you want to save the image
-            $destinationDirectory = '../static/assets/images/';
+            $destinationDirectory = '../../uploads/';
 
             // Check if the generated filename already exists and generate a new unique identifier
             while (file_exists($destinationDirectory . $newFilename)) {
