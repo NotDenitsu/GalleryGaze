@@ -10,7 +10,9 @@ include "../backend/loadprofile.php";
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?=@$username ?></title>
+    <title>
+        <?= @$username ?>
+    </title>
 
     <style>
         .postbox {
@@ -158,7 +160,7 @@ include "../backend/connection.php";
                 <div class="profile__container-details-box">
                     <div class="profile__container-user">
                         <div class="profile__avatar-frame">
-                            <img class="profile__avatar" src="../static/assets/images/<?=@$image_url?>">
+                            <img class="profile__avatar" src="../static/assets/images/<?= @$image_url ?>">
                         </div>
 
                         <div class="profile__container-stats">
@@ -173,14 +175,15 @@ include "../backend/connection.php";
                             </h4>
                         </div>
                     </div>
-                    <button onclick="openReport(<?=@$thisProfileId?>)" class="profile__button-report"><i class="fa fa-solid fa-circle-exclamation"></i></button>
-                    <?php 
-                            $reportType="userReport";
-                            $postId; 
-                            $commentId;
-                            $reportedId = @$thisProfileId;
-                            include "../templates/report.php";
-                     ?>
+                    <button onclick="openReport(<?= @$thisProfileId ?>)" class="profile__button-report"><i
+                            class="fa fa-solid fa-circle-exclamation"></i></button>
+                    <?php
+                    $reportType = "userReport";
+                    $postId;
+                    $commentId;
+                    $reportedId = @$thisProfileId;
+                    include "../templates/report.php";
+                    ?>
                 </div>
                 <div class="profile__container-details-box">
                     <p class="profile__container-biography">
@@ -192,14 +195,14 @@ include "../backend/connection.php";
                         <form id="follow-user" action="../backend/userfollow.php" method="post">
                             <input type="hidden" name="followedUserID" value="<?= @$thisProfileId ?>">
                             <?php
-                                include "../backend/check_follow.php";
-                                if (userIsFollowed($_SESSION['user']['id'], $thisProfileId)) { ?>
-                                    <button id="follow-button" class="profile__button-follow profile__button-follow--unfollow"
-                                        type="submit" name="follow" value="followed">Unfollow</button>
-                                <?php } else { ?>
-                                    <button id="follow-button" class="profile__button-follow" type="submit" name="follow"
-                                        value="followed">Follow</button>
-                                <?php } ?>
+                            include "../backend/check_follow.php";
+                            if (userIsFollowed($_SESSION['user']['id'], $thisProfileId)) { ?>
+                                <button id="follow-button" class="profile__button-follow profile__button-follow--unfollow"
+                                    type="submit" name="follow" value="followed">Unfollow</button>
+                            <?php } else { ?>
+                                <button id="follow-button" class="profile__button-follow" type="submit" name="follow"
+                                    value="followed">Follow</button>
+                            <?php } ?>
                         </form>
                     </div>
                     <script src="../javascript/userfollow-profile.js"></script>
@@ -219,6 +222,12 @@ include "../backend/connection.php";
 
 
 </body>
+
+<!-- Alert window -->
+<div class="alert-window" id="alert-window">
+    <span class="alert-window__text"></span>
+    <span class="alert-window__close-button">&times;</span>
+</div>
 
 <script src="../javascript/report.js"></script>
 
